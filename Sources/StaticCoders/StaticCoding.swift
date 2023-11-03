@@ -9,19 +9,19 @@
 
 import Foundation
 
-public protocol StaticEncoder {
-    associatedtype EncodedValue: Encodable
-
-    static func encode(value: EncodedValue, to encoder: Encoder) throws
-}
-
 public protocol StaticDecoder {
     associatedtype DecodedValue: Decodable
 
     static func decode(from decoder: Decoder) throws -> DecodedValue
 }
 
-public protocol StaticCoder: StaticEncoder & StaticDecoder where EncodedValue == DecodedValue {
+public protocol StaticEncoder {
+    associatedtype EncodedValue: Encodable
+
+    static func encode(value: EncodedValue, to encoder: Encoder) throws
+}
+
+public protocol StaticCoder: StaticDecoder & StaticEncoder where DecodedValue == EncodedValue {
     typealias CodedValue = DecodedValue
 }
 

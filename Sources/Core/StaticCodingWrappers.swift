@@ -9,29 +9,20 @@
 
 import Foundation
 
-public protocol StaticEncoding: Encodable {
-    associatedtype CustomEncoder: StaticEncoder
-
-    var wrappedValue: CustomEncoder.EncodedValue { get }
-}
-
 public protocol StaticDecoding: Decodable {
     associatedtype CustomDecoder: StaticDecoder
 
     init(wrappedValue: CustomDecoder.DecodedValue)
 }
 
-public protocol StaticCoding: StaticEncoding & StaticDecoding where CustomEncoder.EncodedValue == CustomDecoder.DecodedValue {
-    associatedtype CustomCoder: StaticCoder
+public protocol StaticEncoding: Encodable {
+    associatedtype CustomEncoder: StaticEncoder
+
+    var wrappedValue: CustomEncoder.EncodedValue { get }
 }
 
-@propertyWrapper
-public struct StaticEncodingWrapper<CustomEncoder: StaticEncoder>: StaticEncoding {
-    public var wrappedValue: CustomEncoder.EncodedValue
-
-    public init(wrappedValue: CustomEncoder.EncodedValue) {
-        self.wrappedValue = wrappedValue
-    }
+public protocol StaticCoding: StaticDecoding & StaticEncoding where CustomDecoder.DecodedValue == CustomEncoder.EncodedValue {
+    associatedtype CustomCoder: StaticCoder
 }
 
 @propertyWrapper
@@ -44,20 +35,23 @@ public struct StaticDecodingWrapper<CustomDecoder: StaticDecoder>: StaticDecodin
 }
 
 @propertyWrapper
+public struct StaticEncodingWrapper<CustomEncoder: StaticEncoder>: StaticEncoding {
+    public var wrappedValue: CustomEncoder.EncodedValue
+
+    public init(wrappedValue: CustomEncoder.EncodedValue) {
+        self.wrappedValue = wrappedValue
+    }
+}
+
+@propertyWrapper
 public struct StaticCodingWrapper<CustomCoder: StaticCoder>: StaticCoding {
-    public typealias CustomEncoder = CustomCoder
     public typealias CustomDecoder = CustomCoder
+    public typealias CustomEncoder = CustomCoder
 
     public var wrappedValue: CustomCoder.CodedValue
 
     public init(wrappedValue: CustomCoder.CodedValue) {
         self.wrappedValue = wrappedValue
-    }
-}
-
-public extension StaticEncoding {
-    func encode(to encoder: Encoder) throws {
-        try CustomEncoder.encode(value: self.wrappedValue, to: encoder)
     }
 }
 
@@ -67,19 +61,25 @@ public extension StaticDecoding {
     }
 }
 
-extension StaticEncodingWrapper: Decodable, TransientDecoding where CustomEncoder.EncodedValue: Decodable {}
+public extension StaticEncoding {
+    func encode(to encoder: Encoder) throws {
+        try CustomEncoder.encode(value: self.wrappedValue, to: encoder)
+    }
+}
 
 extension StaticDecodingWrapper: Encodable, TransientEncoding where CustomDecoder.DecodedValue: Encodable {}
 
-extension StaticEncodingWrapper: Equatable where CustomEncoder.EncodedValue: Equatable {}
+extension StaticEncodingWrapper: Decodable, TransientDecoding where CustomEncoder.EncodedValue: Decodable {}
 
 extension StaticDecodingWrapper: Equatable where CustomDecoder.DecodedValue: Equatable {}
 
+extension StaticEncodingWrapper: Equatable where CustomEncoder.EncodedValue: Equatable {}
+
 extension StaticCodingWrapper: Equatable where CustomCoder.CodedValue: Equatable {}
 
-extension StaticEncodingWrapper: Hashable where CustomEncoder.EncodedValue: Hashable {}
-
 extension StaticDecodingWrapper: Hashable where CustomDecoder.DecodedValue: Hashable {}
+
+extension StaticEncodingWrapper: Hashable where CustomEncoder.EncodedValue: Hashable {}
 
 extension StaticCodingWrapper: Hashable where CustomCoder.CodedValue: Hashable {}
 

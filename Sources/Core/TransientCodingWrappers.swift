@@ -9,22 +9,22 @@
 
 import Foundation
 
-public protocol TransientEncoding: Encodable {
-    associatedtype EncodedValue: Encodable
-
-    var wrappedValue: EncodedValue { get }
-}
-
 public protocol TransientDecoding: Decodable {
     associatedtype DecodedValue: Decodable
 
     init(wrappedValue: DecodedValue)
 }
 
-public protocol TransientCoding: TransientEncoding & TransientDecoding where EncodedValue == DecodedValue {}
+public protocol TransientEncoding: Encodable {
+    associatedtype EncodedValue: Encodable
+
+    var wrappedValue: EncodedValue { get }
+}
+
+public protocol TransientCoding: TransientDecoding & TransientEncoding where DecodedValue == EncodedValue {}
 
 @propertyWrapper
-public struct TransientEncodingWrapper<T: Codable>: TransientEncoding {
+public struct TransientDecodingWrapper<T: Codable>: TransientDecoding {
     public var wrappedValue: T
 
     public init(wrappedValue: T) {
@@ -33,7 +33,7 @@ public struct TransientEncodingWrapper<T: Codable>: TransientEncoding {
 }
 
 @propertyWrapper
-public struct TransientDecodingWrapper<T: Codable>: TransientDecoding {
+public struct TransientEncodingWrapper<T: Codable>: TransientEncoding {
     public var wrappedValue: T
 
     public init(wrappedValue: T) {
@@ -50,21 +50,15 @@ public struct TransientCodingWrapper<T: Codable>: TransientCoding {
     }
 }
 
-public extension TransientEncoding {
-    func encode(to encoder: Encoder) throws {
-        try self.wrappedValue.encode(to: encoder)
-    }
-}
-
 public extension TransientDecoding {
     init(from decoder: Decoder) throws {
         try self.init(wrappedValue: DecodedValue(from: decoder))
     }
 }
 
-extension TransientEncodingWrapper: Decodable where T: Decodable {
-    public init(from decoder: Decoder) throws {
-        self.wrappedValue = try T(from: decoder)
+public extension TransientEncoding {
+    func encode(to encoder: Encoder) throws {
+        try self.wrappedValue.encode(to: encoder)
     }
 }
 
@@ -74,9 +68,15 @@ extension TransientDecodingWrapper: Encodable where T: Encodable {
     }
 }
 
-extension TransientEncodingWrapper: Equatable where T: Equatable {}
+extension TransientEncodingWrapper: Decodable where T: Decodable {
+    public init(from decoder: Decoder) throws {
+        self.wrappedValue = try T(from: decoder)
+    }
+}
 
 extension TransientDecodingWrapper: Equatable where T: Equatable {}
+
+extension TransientEncodingWrapper: Equatable where T: Equatable {}
 
 extension TransientCodingWrapper: Equatable where T: Equatable {}
 
