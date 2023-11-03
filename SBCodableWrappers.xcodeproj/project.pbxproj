@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9463A7992AF4788A008287DB /* SBCodableWrappers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9463A7902AF4788A008287DB /* SBCodableWrappers.framework */; };
-		9463A7AC2AF4790E008287DB /* SBCodableWrappers.h in Headers */ = {isa = PBXBuildFile; fileRef = 9463A7A92AF4790E008287DB /* SBCodableWrappers.h */; };
 		9463A7AF2AF47922008287DB /* SBCodableWrappersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7AE2AF47922008287DB /* SBCodableWrappersTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,7 +24,6 @@
 /* Begin PBXFileReference section */
 		9463A7902AF4788A008287DB /* SBCodableWrappers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SBCodableWrappers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9463A7982AF4788A008287DB /* SBCodableWrappersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SBCodableWrappersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9463A7A92AF4790E008287DB /* SBCodableWrappers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCodableWrappers.h; sourceTree = "<group>"; };
 		9463A7AE2AF47922008287DB /* SBCodableWrappersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SBCodableWrappersTests.swift; path = Tests/SBCodableWrappersTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,7 +67,6 @@
 		9463A7A82AF4790E008287DB /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				9463A7A92AF4790E008287DB /* SBCodableWrappers.h */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -89,7 +86,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9463A7AC2AF4790E008287DB /* SBCodableWrappers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
