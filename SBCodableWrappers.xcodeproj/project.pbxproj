@@ -12,6 +12,7 @@
 		9463A7B22AF496AB008287DB /* StaticCodingWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7B12AF496AB008287DB /* StaticCodingWrappers.swift */; };
 		9463A7B52AF49857008287DB /* StaticCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7B42AF49857008287DB /* StaticCoding.swift */; };
 		9463A7B72AF49EA6008287DB /* TransientCodingWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7B62AF49EA6008287DB /* TransientCodingWrappers.swift */; };
+		9463A7B92AF4B472008287DB /* BoolCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7B82AF4B472008287DB /* BoolCoding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		9463A7B12AF496AB008287DB /* StaticCodingWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCodingWrappers.swift; sourceTree = "<group>"; };
 		9463A7B42AF49857008287DB /* StaticCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCoding.swift; sourceTree = "<group>"; };
 		9463A7B62AF49EA6008287DB /* TransientCodingWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransientCodingWrappers.swift; sourceTree = "<group>"; };
+		9463A7B82AF4B472008287DB /* BoolCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolCoding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		9463A7B32AF497DB008287DB /* StaticCoders */ = {
 			isa = PBXGroup;
 			children = (
+				9463A7B82AF4B472008287DB /* BoolCoding.swift */,
 				9463A7B42AF49857008287DB /* StaticCoding.swift */,
 			);
 			path = StaticCoders;
@@ -217,6 +220,7 @@
 				9463A7B22AF496AB008287DB /* StaticCodingWrappers.swift in Sources */,
 				9463A7B72AF49EA6008287DB /* TransientCodingWrappers.swift in Sources */,
 				9463A7B52AF49857008287DB /* StaticCoding.swift in Sources */,
+				9463A7B92AF4B472008287DB /* BoolCoding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
