@@ -15,6 +15,7 @@
 		9463A7B92AF4B472008287DB /* BoolCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7B82AF4B472008287DB /* BoolCoding.swift */; };
 		9463A7BB2AF4C58C008287DB /* DataConding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7BA2AF4C58C008287DB /* DataConding.swift */; };
 		9463A7BD2AF4C783008287DB /* DateCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7BC2AF4C783008287DB /* DateCoding.swift */; };
+		9463A7BF2AF4D166008287DB /* FloatingPointCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7BE2AF4D166008287DB /* FloatingPointCoding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		9463A7B82AF4B472008287DB /* BoolCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolCoding.swift; sourceTree = "<group>"; };
 		9463A7BA2AF4C58C008287DB /* DataConding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConding.swift; sourceTree = "<group>"; };
 		9463A7BC2AF4C783008287DB /* DateCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCoding.swift; sourceTree = "<group>"; };
+		9463A7BE2AF4D166008287DB /* FloatingPointCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPointCoding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				9463A7B82AF4B472008287DB /* BoolCoding.swift */,
 				9463A7BA2AF4C58C008287DB /* DataConding.swift */,
 				9463A7BC2AF4C783008287DB /* DateCoding.swift */,
+				9463A7BE2AF4D166008287DB /* FloatingPointCoding.swift */,
 				9463A7B42AF49857008287DB /* StaticCoding.swift */,
 			);
 			path = StaticCoders;
@@ -225,6 +228,7 @@
 			files = (
 				9463A7BB2AF4C58C008287DB /* DataConding.swift in Sources */,
 				9463A7BD2AF4C783008287DB /* DateCoding.swift in Sources */,
+				9463A7BF2AF4D166008287DB /* FloatingPointCoding.swift in Sources */,
 				9463A7B22AF496AB008287DB /* StaticCodingWrappers.swift in Sources */,
 				9463A7B72AF49EA6008287DB /* TransientCodingWrappers.swift in Sources */,
 				9463A7B52AF49857008287DB /* StaticCoding.swift in Sources */,
