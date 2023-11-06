@@ -32,6 +32,12 @@ public extension KeyedDecodingContainer {
     }
 }
 
+public extension KeyedDecodingContainer {
+    func decode<T>(_ type: T.Type, forKey key: KeyedDecodingContainer<K>.Key) throws -> T where T: Decodable, T: AnyImmutableWrapper, T.T: FallbackDecodingWrapper {
+        return try self.decodeIfPresent(T.self, forKey: key) ?? T(wrappedValue: T.T(wrappedValue: T.T.ValueProvider.defaultValue))
+    }
+}
+
 public extension KeyedEncodingContainer {
     mutating func encode<T>(_ value: T, forKey key: KeyedEncodingContainer<K>.Key) throws where T: Encodable, T: AnyImmutableWrapper, T.T: OptionalEncodingWrapper {
         if case Optional<Any>.none = value.wrappedValue.wrappedValue as Any {
