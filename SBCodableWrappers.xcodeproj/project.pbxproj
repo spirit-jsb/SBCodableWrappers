@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		942B2A892AF87A8F00209BE2 /* OmittedCodingWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B2A882AF87A8F00209BE2 /* OmittedCodingWrappers.swift */; };
+		942B2A8B2AF87F8800209BE2 /* ImmutableWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B2A8A2AF87F8800209BE2 /* ImmutableWrappers.swift */; };
 		9463A7992AF4788A008287DB /* SBCodableWrappers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9463A7902AF4788A008287DB /* SBCodableWrappers.framework */; };
 		9463A7AF2AF47922008287DB /* SBCodableWrappersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7AE2AF47922008287DB /* SBCodableWrappersTests.swift */; };
 		9463A7B22AF496AB008287DB /* StaticCodingWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7B12AF496AB008287DB /* StaticCodingWrappers.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		942B2A882AF87A8F00209BE2 /* OmittedCodingWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmittedCodingWrappers.swift; sourceTree = "<group>"; };
+		942B2A8A2AF87F8800209BE2 /* ImmutableWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmutableWrappers.swift; sourceTree = "<group>"; };
 		9463A7902AF4788A008287DB /* SBCodableWrappers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SBCodableWrappers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9463A7982AF4788A008287DB /* SBCodableWrappersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SBCodableWrappersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9463A7AE2AF47922008287DB /* SBCodableWrappersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SBCodableWrappersTests.swift; path = Tests/SBCodableWrappersTests.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		9463A7B02AF48E12008287DB /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				942B2A8A2AF87F8800209BE2 /* ImmutableWrappers.swift */,
 				942B2A882AF87A8F00209BE2 /* OmittedCodingWrappers.swift */,
 				9463A7C22AF4DA8A008287DB /* OptionalCodingWrappers.swift */,
 				9463A7B12AF496AB008287DB /* StaticCodingWrappers.swift */,
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9463A7C12AF4D5AD008287DB /* FilterNilDecoder.swift in Sources */,
+				942B2A8B2AF87F8800209BE2 /* ImmutableWrappers.swift in Sources */,
 				9463A7BB2AF4C58C008287DB /* DataCoder.swift in Sources */,
 				9463A7C32AF4DA8A008287DB /* OptionalCodingWrappers.swift in Sources */,
 				9463A7BD2AF4C783008287DB /* DateCoder.swift in Sources */,
