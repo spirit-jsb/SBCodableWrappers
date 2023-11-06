@@ -12,33 +12,33 @@ import Foundation
 public protocol StaticDecodingWrapper: Decodable {
     associatedtype CustomDecoder: StaticDecoder
 
-    init(wrappedValue: CustomDecoder.DecodedValue)
+    init(wrappedValue: CustomDecoder.DecodeValue)
 }
 
 public protocol StaticEncodingWrapper: Encodable {
     associatedtype CustomEncoder: StaticEncoder
 
-    var wrappedValue: CustomEncoder.EncodedValue { get }
+    var wrappedValue: CustomEncoder.EncodeValue { get }
 }
 
-public protocol StaticCodingWrapper: StaticDecodingWrapper & StaticEncodingWrapper where CustomDecoder.DecodedValue == CustomEncoder.EncodedValue {
+public protocol StaticCodingWrapper: StaticDecodingWrapper & StaticEncodingWrapper where CustomDecoder.DecodeValue == CustomEncoder.EncodeValue {
     associatedtype CustomCoder: StaticCoder
 }
 
 @propertyWrapper
 public struct StaticDecoding<CustomDecoder: StaticDecoder>: StaticDecodingWrapper {
-    public var wrappedValue: CustomDecoder.DecodedValue
+    public var wrappedValue: CustomDecoder.DecodeValue
 
-    public init(wrappedValue: CustomDecoder.DecodedValue) {
+    public init(wrappedValue: CustomDecoder.DecodeValue) {
         self.wrappedValue = wrappedValue
     }
 }
 
 @propertyWrapper
 public struct StaticEncoding<CustomEncoder: StaticEncoder>: StaticEncodingWrapper {
-    public var wrappedValue: CustomEncoder.EncodedValue
+    public var wrappedValue: CustomEncoder.EncodeValue
 
-    public init(wrappedValue: CustomEncoder.EncodedValue) {
+    public init(wrappedValue: CustomEncoder.EncodeValue) {
         self.wrappedValue = wrappedValue
     }
 }
@@ -48,9 +48,9 @@ public struct StaticCoding<CustomCoder: StaticCoder>: StaticCodingWrapper {
     public typealias CustomDecoder = CustomCoder
     public typealias CustomEncoder = CustomCoder
 
-    public var wrappedValue: CustomCoder.CodedValue
+    public var wrappedValue: CustomCoder.CodeValue
 
-    public init(wrappedValue: CustomCoder.CodedValue) {
+    public init(wrappedValue: CustomCoder.CodeValue) {
         self.wrappedValue = wrappedValue
     }
 }
@@ -67,20 +67,20 @@ public extension StaticEncodingWrapper {
     }
 }
 
-extension StaticDecoding: Encodable, TransientEncodingWrapper where CustomDecoder.DecodedValue: Encodable {}
+extension StaticDecoding: Encodable, TransientEncodingWrapper where CustomDecoder.DecodeValue: Encodable {}
 
-extension StaticEncoding: Decodable, TransientDecodingWrapper where CustomEncoder.EncodedValue: Decodable {}
+extension StaticEncoding: Decodable, TransientDecodingWrapper where CustomEncoder.EncodeValue: Decodable {}
 
-extension StaticDecoding: Equatable where CustomDecoder.DecodedValue: Equatable {}
+extension StaticDecoding: Equatable where CustomDecoder.DecodeValue: Equatable {}
 
-extension StaticEncoding: Equatable where CustomEncoder.EncodedValue: Equatable {}
+extension StaticEncoding: Equatable where CustomEncoder.EncodeValue: Equatable {}
 
-extension StaticCoding: Equatable where CustomCoder.CodedValue: Equatable {}
+extension StaticCoding: Equatable where CustomCoder.CodeValue: Equatable {}
 
-extension StaticDecoding: Hashable where CustomDecoder.DecodedValue: Hashable {}
+extension StaticDecoding: Hashable where CustomDecoder.DecodeValue: Hashable {}
 
-extension StaticEncoding: Hashable where CustomEncoder.EncodedValue: Hashable {}
+extension StaticEncoding: Hashable where CustomEncoder.EncodeValue: Hashable {}
 
-extension StaticCoding: Hashable where CustomCoder.CodedValue: Hashable {}
+extension StaticCoding: Hashable where CustomCoder.CodeValue: Hashable {}
 
 #endif

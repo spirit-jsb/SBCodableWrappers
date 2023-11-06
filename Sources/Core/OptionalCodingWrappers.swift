@@ -23,11 +23,11 @@ public protocol EncodingOptionalWrapper {
 
 public typealias CodingOptionalWrapper = DecodingOptionalWrapper & EncodingOptionalWrapper
 
-public protocol OptionalDecodingWrapper: Decodable, DecodingOptionalWrapper where WrappedValue == CustomDecoding.CustomDecoder.DecodedValue? {
+public protocol OptionalDecodingWrapper: Decodable, DecodingOptionalWrapper where WrappedValue == CustomDecoding.CustomDecoder.DecodeValue? {
     associatedtype CustomDecoding: StaticDecodingWrapper
 }
 
-public protocol OptionalEncodingWrapper: Encodable, EncodingOptionalWrapper where WrappedValue == CustomEncoding.CustomEncoder.EncodedValue? {
+public protocol OptionalEncodingWrapper: Encodable, EncodingOptionalWrapper where WrappedValue == CustomEncoding.CustomEncoder.EncodeValue? {
     associatedtype CustomEncoding: StaticEncodingWrapper
 }
 
@@ -35,18 +35,18 @@ public typealias OptionalCodingWrapper = OptionalDecodingWrapper & OptionalEncod
 
 @propertyWrapper
 public struct OptionalDecoding<CustomDecoding: StaticDecodingWrapper>: OptionalDecodingWrapper {
-    public var wrappedValue: CustomDecoding.CustomDecoder.DecodedValue?
+    public var wrappedValue: CustomDecoding.CustomDecoder.DecodeValue?
 
-    public init(wrappedValue: CustomDecoding.CustomDecoder.DecodedValue?) {
+    public init(wrappedValue: CustomDecoding.CustomDecoder.DecodeValue?) {
         self.wrappedValue = wrappedValue
     }
 }
 
 @propertyWrapper
 public struct OptionalEncoding<CustomEncoding: StaticEncodingWrapper>: OptionalEncodingWrapper {
-    public var wrappedValue: CustomEncoding.CustomEncoder.EncodedValue?
+    public var wrappedValue: CustomEncoding.CustomEncoder.EncodeValue?
 
-    public init(wrappedValue: CustomEncoding.CustomEncoder.EncodedValue?) {
+    public init(wrappedValue: CustomEncoding.CustomEncoder.EncodeValue?) {
         self.wrappedValue = wrappedValue
     }
 }
@@ -56,9 +56,9 @@ public struct OptionalCoding<CustomCoding: StaticCodingWrapper>: OptionalCodingW
     public typealias CustomDecoding = CustomCoding
     public typealias CustomEncoding = CustomCoding
 
-    public var wrappedValue: CustomCoding.CustomEncoder.EncodedValue?
+    public var wrappedValue: CustomCoding.CustomEncoder.EncodeValue?
 
-    public init(wrappedValue: CustomCoding.CustomDecoder.DecodedValue?) {
+    public init(wrappedValue: CustomCoding.CustomDecoder.DecodeValue?) {
         self.wrappedValue = wrappedValue
     }
 }
@@ -93,20 +93,20 @@ public extension OptionalEncodingWrapper {
     }
 }
 
-extension OptionalDecoding: Encodable, TransientEncodingWrapper where CustomDecoding.CustomDecoder.DecodedValue: Encodable {}
+extension OptionalDecoding: Encodable, TransientEncodingWrapper where CustomDecoding.CustomDecoder.DecodeValue: Encodable {}
 
-extension OptionalEncoding: Decodable, TransientDecodingWrapper where CustomEncoding.CustomEncoder.EncodedValue: Decodable {}
+extension OptionalEncoding: Decodable, TransientDecodingWrapper where CustomEncoding.CustomEncoder.EncodeValue: Decodable {}
 
-extension OptionalDecoding: Equatable where CustomDecoding.CustomDecoder.DecodedValue: Equatable {}
+extension OptionalDecoding: Equatable where CustomDecoding.CustomDecoder.DecodeValue: Equatable {}
 
-extension OptionalEncoding: Equatable where CustomEncoding.CustomEncoder.EncodedValue: Equatable {}
+extension OptionalEncoding: Equatable where CustomEncoding.CustomEncoder.EncodeValue: Equatable {}
 
-extension OptionalCoding: Equatable where CustomCoding.CustomEncoder.EncodedValue: Equatable {}
+extension OptionalCoding: Equatable where CustomCoding.CustomEncoder.EncodeValue: Equatable {}
 
-extension OptionalDecoding: Hashable where CustomDecoding.CustomDecoder.DecodedValue: Hashable {}
+extension OptionalDecoding: Hashable where CustomDecoding.CustomDecoder.DecodeValue: Hashable {}
 
-extension OptionalEncoding: Hashable where CustomEncoding.CustomEncoder.EncodedValue: Hashable {}
+extension OptionalEncoding: Hashable where CustomEncoding.CustomEncoder.EncodeValue: Hashable {}
 
-extension OptionalCoding: Hashable where CustomCoding.CustomEncoder.EncodedValue: Hashable {}
+extension OptionalCoding: Hashable where CustomCoding.CustomEncoder.EncodeValue: Hashable {}
 
 #endif
