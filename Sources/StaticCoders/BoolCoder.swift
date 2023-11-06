@@ -10,7 +10,7 @@
 import Foundation
 
 public protocol NonConformingBoolValueProvider {
-    associatedtype Value
+    associatedtype Value: Codable, Equatable
 
     static func convertToBool(from value: Value) -> Bool?
     static func convertToValue(from bool: Bool) -> Value
