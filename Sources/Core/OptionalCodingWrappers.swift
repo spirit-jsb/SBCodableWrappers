@@ -21,8 +21,6 @@ public protocol EncodingOptionalWrapper {
     var wrappedValue: WrappedValue { get }
 }
 
-public typealias CodingOptionalWrapper = DecodingOptionalWrapper & EncodingOptionalWrapper
-
 public protocol OptionalDecodingWrapper: Decodable, DecodingOptionalWrapper where WrappedValue == CustomDecoding.CustomDecoder.DecodeValue? {
     associatedtype CustomDecoding: StaticDecodingWrapper
 }

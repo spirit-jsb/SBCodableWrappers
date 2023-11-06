@@ -10,18 +10,18 @@
 import Foundation
 
 public protocol TransientDecodingWrapper: Decodable {
-    associatedtype DecodedValue: Decodable
+    associatedtype DecodeValue: Decodable
 
-    init(wrappedValue: DecodedValue)
+    init(wrappedValue: DecodeValue)
 }
 
 public protocol TransientEncodingWrapper: Encodable {
-    associatedtype EncodedValue: Encodable
+    associatedtype EncodeValue: Encodable
 
-    var wrappedValue: EncodedValue { get }
+    var wrappedValue: EncodeValue { get }
 }
 
-public protocol TransientCodingWrapper: TransientDecodingWrapper & TransientEncodingWrapper where DecodedValue == EncodedValue {}
+public protocol TransientCodingWrapper: TransientDecodingWrapper & TransientEncodingWrapper where DecodeValue == EncodeValue {}
 
 @propertyWrapper
 public struct TransientDecoding<T: Codable>: TransientDecodingWrapper {
@@ -52,7 +52,7 @@ public struct TransientCoding<T: Codable>: TransientCodingWrapper {
 
 public extension TransientDecodingWrapper {
     init(from decoder: Decoder) throws {
-        try self.init(wrappedValue: DecodedValue(from: decoder))
+        try self.init(wrappedValue: DecodeValue(from: decoder))
     }
 }
 

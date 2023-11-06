@@ -28,7 +28,7 @@ public struct Immutable<T>: AnyImmutableWrapper {
 
 public extension KeyedDecodingContainer {
     func decode<T>(_ type: T.Type, forKey key: KeyedDecodingContainer<K>.Key) throws -> T where T: Decodable, T: AnyImmutableWrapper, T.T: OptionalDecodingWrapper {
-        return try self.decodeIfPresent(T.self, forKey: key) ?? T(wrappedValue: .init(wrappedValue: nil))
+        return try self.decodeIfPresent(T.self, forKey: key) ?? T(wrappedValue: T.T(wrappedValue: nil))
     }
 }
 
