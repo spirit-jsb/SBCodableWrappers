@@ -1,5 +1,5 @@
 //
-//  FilterNilDecoding.swift
+//  FilterNilDecoder.swift
 //  SBCodableWrappers
 //
 //  Created by JONO-Jsb on 2023/11/3.

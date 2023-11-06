@@ -1,5 +1,5 @@
 //
-//  StaticCoding.swift
+//  StaticCoder.swift
 //  SBCodableWrappers
 //
 //  Created by JONO-Jsb on 2023/11/3.
