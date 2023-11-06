@@ -36,7 +36,7 @@ extension UnkeyedDecodingContainer {
         var elements: [T] = []
 
         while !self.isAtEnd {
-            if let element = try decodeIfPresent(T?.self) as? T {
+            if let element = try self.decodeIfPresent(T?.self) as? T {
                 elements.append(element)
             }
         }
