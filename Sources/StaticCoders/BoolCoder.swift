@@ -10,24 +10,24 @@
 import Foundation
 
 public protocol NonConformingBoolValueProvider {
-    associatedtype EncodedValue: Codable, Equatable
+    associatedtype Value
 
-    static func convertToBool(from value: EncodedValue) -> Bool?
-    static func convertToValue(from bool: Bool) -> EncodedValue
+    static func convertToBool(from value: Value) -> Bool?
+    static func convertToValue(from bool: Bool) -> Value
 }
 
-public struct BoolAsIntegerValueProvider<EncodedValue>: NonConformingBoolValueProvider where EncodedValue: FixedWidthInteger & Codable {
-    public static func convertToBool(from value: EncodedValue) -> Bool? {
+public struct BoolAsIntegerValueProvider<Value>: NonConformingBoolValueProvider where Value: FixedWidthInteger & Codable {
+    public static func convertToBool(from value: Value) -> Bool? {
         return value > 0 ? true : false
     }
 
-    public static func convertToValue(from bool: Bool) -> EncodedValue {
+    public static func convertToValue(from bool: Bool) -> Value {
         return bool ? 1 : 0
     }
 }
 
 public struct BoolAsStringValueProvider: NonConformingBoolValueProvider {
-    public typealias EncodedValue = String
+    public typealias Value = String
 
     public static func convertToBool(from value: String) -> Bool? {
         switch value.lowercased() {
@@ -45,14 +45,14 @@ public struct BoolAsStringValueProvider: NonConformingBoolValueProvider {
     }
 }
 
-public struct NonConformingBoolStaticCoder<ValueProvider: NonConformingBoolValueProvider>: StaticCoder {
+public struct NonConformingBoolStaticCoder<ValueProvider: NonConformingBoolValueProvider>: StaticCoder where ValueProvider.Value: Codable {
     public static func decode(from decoder: Decoder) throws -> Bool {
-        let encodedValue = try ValueProvider.EncodedValue(from: decoder)
+        let value = try ValueProvider.Value(from: decoder)
 
-        if let bool = ValueProvider.convertToBool(from: encodedValue) {
+        if let bool = ValueProvider.convertToBool(from: value) {
             return bool
         } else {
-            throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "failed to convert \(ValueProvider.EncodedValue.self) to Bool"))
+            throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "failed to convert \(ValueProvider.Value.self) to Bool"))
         }
     }
 
