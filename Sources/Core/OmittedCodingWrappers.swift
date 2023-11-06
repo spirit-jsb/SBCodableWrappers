@@ -9,18 +9,18 @@
 
 import Foundation
 
-public protocol OmittedDecoding: Decodable {
+public protocol OmittedDecodingWrapper: Decodable {
     associatedtype WrappedValue: ExpressibleByNilLiteral
 
     init(wrappedValue: WrappedValue)
 }
 
-public protocol OmittedEncoding: Encodable {}
+public protocol OmittedEncodingWrapper: Encodable {}
 
-public typealias OmittedCoding = OmittedDecoding & OmittedEncoding
+public typealias OmittedCodingWrapper = OmittedDecodingWrapper & OmittedEncodingWrapper
 
 @propertyWrapper
-public struct OmittedDecodingWrapper<WrappedValue: Decodable>: OmittedDecoding {
+public struct OmittedDecoding<WrappedValue: Decodable>: OmittedDecodingWrapper {
     public var wrappedValue: WrappedValue?
 
     public init(wrappedValue: WrappedValue?) {
@@ -29,7 +29,7 @@ public struct OmittedDecodingWrapper<WrappedValue: Decodable>: OmittedDecoding {
 }
 
 @propertyWrapper
-public struct OmittedEncodingWrapper<WrappedValue: Encodable>: OmittedEncoding {
+public struct OmittedEncoding<WrappedValue: Encodable>: OmittedEncodingWrapper {
     public var wrappedValue: WrappedValue?
 
     public init(wrappedValue: WrappedValue?) {
@@ -38,7 +38,7 @@ public struct OmittedEncodingWrapper<WrappedValue: Encodable>: OmittedEncoding {
 }
 
 @propertyWrapper
-public struct OmittedCodingWrapper<WrappedValue: Codable>: OmittedCoding {
+public struct OmittedCoding<WrappedValue: Codable>: OmittedCodingWrapper {
     public var wrappedValue: WrappedValue?
 
     public init(wrappedValue: WrappedValue?) {
@@ -47,39 +47,39 @@ public struct OmittedCodingWrapper<WrappedValue: Codable>: OmittedCoding {
 }
 
 public extension KeyedDecodingContainer {
-    func decode<T>(_ type: T.Type, forKey key: KeyedDecodingContainer<K>.Key) throws -> T where T: OmittedDecoding {
+    func decode<T>(_ type: T.Type, forKey key: KeyedDecodingContainer<K>.Key) throws -> T where T: OmittedDecodingWrapper {
         return try self.decodeIfPresent(T.self, forKey: key) ?? T(wrappedValue: nil)
     }
 }
 
 public extension KeyedEncodingContainer {
-    mutating func encode<T>(_ value: T, forKey key: KeyedEncodingContainer<K>.Key) throws where T: OmittedEncoding {}
+    mutating func encode<T>(_ value: T, forKey key: KeyedEncodingContainer<K>.Key) throws where T: OmittedEncodingWrapper {}
 }
 
-public extension OmittedDecoding {
+public extension OmittedDecodingWrapper {
     init(from decoder: Decoder) throws {
         self.init(wrappedValue: nil)
     }
 }
 
-public extension OmittedEncoding {
+public extension OmittedEncodingWrapper {
     func encode(to encoder: Encoder) throws {}
 }
 
-extension OmittedDecodingWrapper: Encodable, TransientEncoding where WrappedValue: Encodable {}
+extension OmittedDecoding: Encodable, TransientEncodingWrapper where WrappedValue: Encodable {}
 
-extension OmittedEncodingWrapper: Decodable, TransientDecoding where WrappedValue: Decodable {}
+extension OmittedEncoding: Decodable, TransientDecodingWrapper where WrappedValue: Decodable {}
 
-extension OmittedDecodingWrapper: Equatable where WrappedValue: Equatable {}
+extension OmittedDecoding: Equatable where WrappedValue: Equatable {}
 
-extension OmittedEncodingWrapper: Equatable where WrappedValue: Equatable {}
+extension OmittedEncoding: Equatable where WrappedValue: Equatable {}
 
-extension OmittedCodingWrapper: Equatable where WrappedValue: Equatable {}
+extension OmittedCoding: Equatable where WrappedValue: Equatable {}
 
-extension OmittedDecodingWrapper: Hashable where WrappedValue: Hashable {}
+extension OmittedDecoding: Hashable where WrappedValue: Hashable {}
 
-extension OmittedEncodingWrapper: Hashable where WrappedValue: Hashable {}
+extension OmittedEncoding: Hashable where WrappedValue: Hashable {}
 
-extension OmittedCodingWrapper: Hashable where WrappedValue: Hashable {}
+extension OmittedCoding: Hashable where WrappedValue: Hashable {}
 
 #endif
