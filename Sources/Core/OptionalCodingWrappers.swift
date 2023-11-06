@@ -63,6 +63,22 @@ public struct OptionalCodingWrapper<CustomCoding: StaticCoding>: OptionalCoding 
     }
 }
 
+public extension KeyedDecodingContainer {
+    func decode<T>(_ type: T.Type, forKey key: KeyedDecodingContainer<K>.Key) throws -> T where T: Decodable, T: DecodingOptionalWrapping {
+        return try self.decodeIfPresent(T.self, forKey: key) ?? T(wrappedValue: nil)
+    }
+}
+
+public extension KeyedEncodingContainer {
+    mutating func encode<T>(_ value: T, forKey key: KeyedEncodingContainer<K>.Key) throws where T: Encodable, T: EncodingOptionalWrapping {
+        if case Optional<Any>.none = value.wrappedValue as Any {
+            return
+        }
+
+        try self.encodeIfPresent(value, forKey: key)
+    }
+}
+
 public extension OptionalDecoding {
     init(from decoder: Decoder) throws {
         self.init(wrappedValue: try? CustomDecoding.CustomDecoder.decode(from: decoder))
