@@ -9,34 +9,32 @@
 
 import Foundation
 
-public protocol OptionalWrappedDecoding {
+public protocol DecodingOptionalWrapping {
     associatedtype WrappedValue: ExpressibleByNilLiteral
 
     init(wrappedValue: WrappedValue)
 }
 
-public protocol OptionalWrappedEncoding {
+public protocol EncodingOptionalWrapping {
     associatedtype WrappedValue: ExpressibleByNilLiteral
 
     var wrappedValue: WrappedValue { get }
 }
 
-public typealias OptionalWrappedCoding = OptionalWrappedDecoding & OptionalWrappedEncoding
+public typealias OptionalWrappedCoding = DecodingOptionalWrapping & EncodingOptionalWrapping
 
-public protocol OptionalDecoding: Decodable, OptionalWrappedDecoding where WrappedValue == DecodingWrapper.CustomDecoder.DecodedValue? {
-    associatedtype DecodingWrapper: StaticDecoding
+public protocol OptionalDecoding: Decodable, DecodingOptionalWrapping where WrappedValue == CustomDecoding.CustomDecoder.DecodedValue? {
+    associatedtype CustomDecoding: StaticDecoding
 }
 
-public protocol OptionalEncoding: Encodable, OptionalWrappedEncoding where WrappedValue == EncodingWrapper.CustomEncoder.EncodedValue? {
-    associatedtype EncodingWrapper: StaticEncoding
+public protocol OptionalEncoding: Encodable, EncodingOptionalWrapping where WrappedValue == CustomEncoding.CustomEncoder.EncodedValue? {
+    associatedtype CustomEncoding: StaticEncoding
 }
 
 public typealias OptionalCoding = OptionalDecoding & OptionalEncoding
 
 @propertyWrapper
 public struct OptionalDecodingWrapper<CustomDecoding: StaticDecoding>: OptionalDecoding {
-    public typealias DecodingWrapper = CustomDecoding
-
     public var wrappedValue: CustomDecoding.CustomDecoder.DecodedValue?
 
     public init(wrappedValue: CustomDecoding.CustomDecoder.DecodedValue?) {
@@ -46,8 +44,6 @@ public struct OptionalDecodingWrapper<CustomDecoding: StaticDecoding>: OptionalD
 
 @propertyWrapper
 public struct OptionalEncodingWrapper<CustomEncoding: StaticEncoding>: OptionalEncoding {
-    public typealias EncodingWrapper = CustomEncoding
-
     public var wrappedValue: CustomEncoding.CustomEncoder.EncodedValue?
 
     public init(wrappedValue: CustomEncoding.CustomEncoder.EncodedValue?) {
@@ -57,8 +53,8 @@ public struct OptionalEncodingWrapper<CustomEncoding: StaticEncoding>: OptionalE
 
 @propertyWrapper
 public struct OptionalCodingWrapper<CustomCoding: StaticCoding>: OptionalCoding {
-    public typealias DecodingWrapper = CustomCoding
-    public typealias EncodingWrapper = CustomCoding
+    public typealias CustomDecoding = CustomCoding
+    public typealias CustomEncoding = CustomCoding
 
     public var wrappedValue: CustomCoding.CustomEncoder.EncodedValue?
 
@@ -69,14 +65,14 @@ public struct OptionalCodingWrapper<CustomCoding: StaticCoding>: OptionalCoding 
 
 public extension OptionalDecoding {
     init(from decoder: Decoder) throws {
-        self.init(wrappedValue: try? DecodingWrapper.CustomDecoder.decode(from: decoder))
+        self.init(wrappedValue: try? CustomDecoding.CustomDecoder.decode(from: decoder))
     }
 }
 
 public extension OptionalEncoding {
     func encode(to encoder: Encoder) throws {
         if let wrappedValue = self.wrappedValue {
-            try EncodingWrapper.CustomEncoder.encode(value: wrappedValue, to: encoder)
+            try CustomEncoding.CustomEncoder.encode(value: wrappedValue, to: encoder)
         }
     }
 }
@@ -95,6 +91,6 @@ extension OptionalDecodingWrapper: Hashable where CustomDecoding.CustomDecoder.D
 
 extension OptionalEncodingWrapper: Hashable where CustomEncoding.CustomEncoder.EncodedValue: Hashable {}
 
-extension OptionalCodingWrapper: Hashable where CustomCoding.CustomDecoder.DecodedValue: Hashable {}
+extension OptionalCodingWrapper: Hashable where CustomCoding.CustomEncoder.EncodedValue: Hashable {}
 
 #endif
