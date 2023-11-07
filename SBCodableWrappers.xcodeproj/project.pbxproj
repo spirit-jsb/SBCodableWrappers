@@ -22,6 +22,7 @@
 		9463A7BF2AF4D166008287DB /* FloatingPointCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7BE2AF4D166008287DB /* FloatingPointCoder.swift */; };
 		9463A7C12AF4D5AD008287DB /* FilterNilDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7C02AF4D5AD008287DB /* FilterNilDecoder.swift */; };
 		9463A7C32AF4DA8A008287DB /* OptionalCodingWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7C22AF4DA8A008287DB /* OptionalCodingWrappers.swift */; };
+		947EF0592AF9DBAF005F48FA /* NullEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0582AF9DBAF005F48FA /* NullEncoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		9463A7BE2AF4D166008287DB /* FloatingPointCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPointCoder.swift; sourceTree = "<group>"; };
 		9463A7C02AF4D5AD008287DB /* FilterNilDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterNilDecoder.swift; sourceTree = "<group>"; };
 		9463A7C22AF4DA8A008287DB /* OptionalCodingWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalCodingWrappers.swift; sourceTree = "<group>"; };
+		947EF0582AF9DBAF005F48FA /* NullEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullEncoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				9463A7BC2AF4C783008287DB /* DateCoder.swift */,
 				9463A7C02AF4D5AD008287DB /* FilterNilDecoder.swift */,
 				9463A7BE2AF4D166008287DB /* FloatingPointCoder.swift */,
+				947EF0582AF9DBAF005F48FA /* NullEncoder.swift */,
 				9463A7B42AF49857008287DB /* StaticCoder.swift */,
 			);
 			path = StaticCoders;
@@ -255,6 +258,7 @@
 				9463A7C12AF4D5AD008287DB /* FilterNilDecoder.swift in Sources */,
 				942B2A8B2AF87F8800209BE2 /* ImmutableWrappers.swift in Sources */,
 				9463A7BB2AF4C58C008287DB /* DataCoder.swift in Sources */,
+				947EF0592AF9DBAF005F48FA /* NullEncoder.swift in Sources */,
 				9463A7C32AF4DA8A008287DB /* OptionalCodingWrappers.swift in Sources */,
 				9463A7BD2AF4C783008287DB /* DateCoder.swift in Sources */,
 				9463A7BF2AF4D166008287DB /* FloatingPointCoder.swift in Sources */,
