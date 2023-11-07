@@ -26,6 +26,7 @@
 		947EF05F2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF05E2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift */; };
 		947EF0612AFA18DC005F48FA /* Base64CodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0602AFA18DC005F48FA /* Base64CodingTests.swift */; };
 		947EF0632AFA1AF9005F48FA /* CodingTestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0622AFA1AF9005F48FA /* CodingTestSpec.swift */; };
+		947EF0652AFA2535005F48FA /* NonConformingDecimalCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0642AFA2535005F48FA /* NonConformingDecimalCodingTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		947EF05E2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonConformingBoolCodingTests.swift; sourceTree = "<group>"; };
 		947EF0602AFA18DC005F48FA /* Base64CodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64CodingTests.swift; sourceTree = "<group>"; };
 		947EF0622AFA1AF9005F48FA /* CodingTestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingTestSpec.swift; sourceTree = "<group>"; };
+		947EF0642AFA2535005F48FA /* NonConformingDecimalCodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonConformingDecimalCodingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				947EF0622AFA1AF9005F48FA /* CodingTestSpec.swift */,
 				947EF0602AFA18DC005F48FA /* Base64CodingTests.swift */,
 				947EF05E2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift */,
+				947EF0642AFA2535005F48FA /* NonConformingDecimalCodingTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				947EF05F2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift in Sources */,
 				947EF0632AFA1AF9005F48FA /* CodingTestSpec.swift in Sources */,
 				947EF0612AFA18DC005F48FA /* Base64CodingTests.swift in Sources */,
+				947EF0652AFA2535005F48FA /* NonConformingDecimalCodingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
