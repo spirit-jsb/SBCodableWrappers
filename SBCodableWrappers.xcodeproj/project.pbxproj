@@ -23,10 +23,10 @@
 		9463A7C32AF4DA8A008287DB /* OptionalCodingWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7C22AF4DA8A008287DB /* OptionalCodingWrappers.swift */; };
 		947EF0592AF9DBAF005F48FA /* NullEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0582AF9DBAF005F48FA /* NullEncoder.swift */; };
 		947EF05B2AF9E7C3005F48FA /* ConvenienceDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF05A2AF9E7C3005F48FA /* ConvenienceDefaultValues.swift */; };
-		947EF05F2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF05E2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift */; };
-		947EF0612AFA18DC005F48FA /* Base64CodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0602AFA18DC005F48FA /* Base64CodingTests.swift */; };
-		947EF0632AFA1AF9005F48FA /* CodingTestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0622AFA1AF9005F48FA /* CodingTestSpec.swift */; };
-		947EF0652AFA2535005F48FA /* NonConformingDecimalCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0642AFA2535005F48FA /* NonConformingDecimalCodingTests.swift */; };
+		947EF06D2AFA2D74005F48FA /* Base64CodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0682AFA2D74005F48FA /* Base64CodingTests.swift */; };
+		947EF06E2AFA2D74005F48FA /* CodingTestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0692AFA2D74005F48FA /* CodingTestSpec.swift */; };
+		947EF06F2AFA2D74005F48FA /* NonConformingBoolCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF06A2AFA2D74005F48FA /* NonConformingBoolCodingTests.swift */; };
+		947EF0702AFA2D74005F48FA /* NonConformingDecimalCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF06B2AFA2D74005F48FA /* NonConformingDecimalCodingTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,10 +57,10 @@
 		9463A7C22AF4DA8A008287DB /* OptionalCodingWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalCodingWrappers.swift; sourceTree = "<group>"; };
 		947EF0582AF9DBAF005F48FA /* NullEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullEncoder.swift; sourceTree = "<group>"; };
 		947EF05A2AF9E7C3005F48FA /* ConvenienceDefaultValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceDefaultValues.swift; sourceTree = "<group>"; };
-		947EF05E2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonConformingBoolCodingTests.swift; sourceTree = "<group>"; };
-		947EF0602AFA18DC005F48FA /* Base64CodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64CodingTests.swift; sourceTree = "<group>"; };
-		947EF0622AFA1AF9005F48FA /* CodingTestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingTestSpec.swift; sourceTree = "<group>"; };
-		947EF0642AFA2535005F48FA /* NonConformingDecimalCodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonConformingDecimalCodingTests.swift; sourceTree = "<group>"; };
+		947EF0682AFA2D74005F48FA /* Base64CodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Base64CodingTests.swift; path = Tests/Base64CodingTests.swift; sourceTree = "<group>"; };
+		947EF0692AFA2D74005F48FA /* CodingTestSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodingTestSpec.swift; path = Tests/CodingTestSpec.swift; sourceTree = "<group>"; };
+		947EF06A2AFA2D74005F48FA /* NonConformingBoolCodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NonConformingBoolCodingTests.swift; path = Tests/NonConformingBoolCodingTests.swift; sourceTree = "<group>"; };
+		947EF06B2AFA2D74005F48FA /* NonConformingDecimalCodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NonConformingDecimalCodingTests.swift; path = Tests/NonConformingDecimalCodingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,10 +122,10 @@
 		9463A7AA2AF4790E008287DB /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				947EF0622AFA1AF9005F48FA /* CodingTestSpec.swift */,
-				947EF0602AFA18DC005F48FA /* Base64CodingTests.swift */,
-				947EF05E2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift */,
-				947EF0642AFA2535005F48FA /* NonConformingDecimalCodingTests.swift */,
+				947EF0692AFA2D74005F48FA /* CodingTestSpec.swift */,
+				947EF0682AFA2D74005F48FA /* Base64CodingTests.swift */,
+				947EF06A2AFA2D74005F48FA /* NonConformingBoolCodingTests.swift */,
+				947EF06B2AFA2D74005F48FA /* NonConformingDecimalCodingTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -289,10 +289,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				947EF05F2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift in Sources */,
-				947EF0632AFA1AF9005F48FA /* CodingTestSpec.swift in Sources */,
-				947EF0612AFA18DC005F48FA /* Base64CodingTests.swift in Sources */,
-				947EF0652AFA2535005F48FA /* NonConformingDecimalCodingTests.swift in Sources */,
+				947EF06E2AFA2D74005F48FA /* CodingTestSpec.swift in Sources */,
+				947EF06D2AFA2D74005F48FA /* Base64CodingTests.swift in Sources */,
+				947EF06F2AFA2D74005F48FA /* NonConformingBoolCodingTests.swift in Sources */,
+				947EF0702AFA2D74005F48FA /* NonConformingDecimalCodingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
