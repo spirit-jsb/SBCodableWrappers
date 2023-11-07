@@ -10,21 +10,21 @@
 import Foundation
 
 public protocol TransientDecodingWrapper: Decodable {
-    associatedtype DecodeValue: Decodable
+    associatedtype WrappedDecodeValue: Decodable
 
-    init(wrappedValue: DecodeValue)
+    init(wrappedValue: WrappedDecodeValue)
 }
 
 public protocol TransientEncodingWrapper: Encodable {
-    associatedtype EncodeValue: Encodable
+    associatedtype WrappedEncodeValue: Encodable
 
-    var wrappedValue: EncodeValue { get }
+    var wrappedValue: WrappedEncodeValue { get }
 }
 
-public protocol TransientCodingWrapper: TransientDecodingWrapper & TransientEncodingWrapper where DecodeValue == EncodeValue {}
+public protocol TransientCodingWrapper: TransientDecodingWrapper & TransientEncodingWrapper where WrappedDecodeValue == WrappedEncodeValue {}
 
 @propertyWrapper
-public struct TransientDecoding<T: Codable>: TransientDecodingWrapper {
+public struct TransientDecoding<T: Decodable>: TransientDecodingWrapper {
     public var wrappedValue: T
 
     public init(wrappedValue: T) {
@@ -33,7 +33,7 @@ public struct TransientDecoding<T: Codable>: TransientDecodingWrapper {
 }
 
 @propertyWrapper
-public struct TransientEncoding<T: Codable>: TransientEncodingWrapper {
+public struct TransientEncoding<T: Encodable>: TransientEncodingWrapper {
     public var wrappedValue: T
 
     public init(wrappedValue: T) {
@@ -52,7 +52,7 @@ public struct TransientCoding<T: Codable>: TransientCodingWrapper {
 
 public extension TransientDecodingWrapper {
     init(from decoder: Decoder) throws {
-        try self.init(wrappedValue: DecodeValue(from: decoder))
+        try self.init(wrappedValue: WrappedDecodeValue(from: decoder))
     }
 }
 

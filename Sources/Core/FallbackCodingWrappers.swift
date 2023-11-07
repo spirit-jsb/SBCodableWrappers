@@ -80,7 +80,7 @@ public extension FallbackEncodingWrapper {
 
 public extension KeyedDecodingContainer {
     func decode<T>(_ type: T.Type, forKey key: KeyedDecodingContainer<K>.Key) throws -> T where T: FallbackDecodingWrapper {
-        return try decodeIfPresent(T.self, forKey: key) ?? T(wrappedValue: T.ValueProvider.defaultValue)
+        return try self.decodeIfPresent(T.self, forKey: key) ?? T(wrappedValue: T.ValueProvider.defaultValue)
     }
 }
 

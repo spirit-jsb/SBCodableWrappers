@@ -39,11 +39,11 @@ public struct NonConformingFloatStaticCoder<ValueProvider: NonConformingDecimalV
 
     public static func encode(value: Float, to encoder: Encoder) throws {
         if value.isNaN {
-            return try ValueProvider.nan.encode(to: encoder)
+            try ValueProvider.nan.encode(to: encoder)
         } else if value == Float.infinity {
-            return try ValueProvider.positiveInfinity.encode(to: encoder)
+            try ValueProvider.positiveInfinity.encode(to: encoder)
         } else if value == -Float.infinity {
-            return try ValueProvider.negativeInfinity.encode(to: encoder)
+            try ValueProvider.negativeInfinity.encode(to: encoder)
         } else {
             try value.encode(to: encoder)
         }
@@ -74,11 +74,11 @@ public struct NonConformingDoubleStaticCoder<ValueProvider: NonConformingDecimal
 
     public static func encode(value: Double, to encoder: Encoder) throws {
         if value.isNaN {
-            return try ValueProvider.nan.encode(to: encoder)
+            try ValueProvider.nan.encode(to: encoder)
         } else if value == Double.infinity {
-            return try ValueProvider.positiveInfinity.encode(to: encoder)
+            try ValueProvider.positiveInfinity.encode(to: encoder)
         } else if value == -Double.infinity {
-            return try ValueProvider.negativeInfinity.encode(to: encoder)
+            try ValueProvider.negativeInfinity.encode(to: encoder)
         } else {
             try value.encode(to: encoder)
         }

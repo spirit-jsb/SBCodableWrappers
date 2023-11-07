@@ -10,9 +10,9 @@
 import Foundation
 
 public protocol OmittedDecodingWrapper: Decodable {
-    associatedtype WrappedValue: ExpressibleByNilLiteral
+    associatedtype WrappedDecodeValue: ExpressibleByNilLiteral
 
-    init(wrappedValue: WrappedValue)
+    init(wrappedValue: WrappedDecodeValue)
 }
 
 public protocol OmittedEncodingWrapper: Encodable {}
@@ -20,28 +20,28 @@ public protocol OmittedEncodingWrapper: Encodable {}
 public typealias OmittedCodingWrapper = OmittedDecodingWrapper & OmittedEncodingWrapper
 
 @propertyWrapper
-public struct OmittedDecoding<WrappedValue: Decodable>: OmittedDecodingWrapper {
-    public var wrappedValue: WrappedValue?
+public struct OmittedDecoding<T: Decodable>: OmittedDecodingWrapper {
+    public var wrappedValue: T?
 
-    public init(wrappedValue: WrappedValue?) {
+    public init(wrappedValue: T?) {
         self.wrappedValue = wrappedValue
     }
 }
 
 @propertyWrapper
-public struct OmittedEncoding<WrappedValue: Encodable>: OmittedEncodingWrapper {
-    public var wrappedValue: WrappedValue?
+public struct OmittedEncoding<T: Encodable>: OmittedEncodingWrapper {
+    public var wrappedValue: T?
 
-    public init(wrappedValue: WrappedValue?) {
+    public init(wrappedValue: T?) {
         self.wrappedValue = wrappedValue
     }
 }
 
 @propertyWrapper
-public struct OmittedCoding<WrappedValue: Codable>: OmittedCodingWrapper {
-    public var wrappedValue: WrappedValue?
+public struct OmittedCoding<T: Codable>: OmittedCodingWrapper {
+    public var wrappedValue: T?
 
-    public init(wrappedValue: WrappedValue?) {
+    public init(wrappedValue: T?) {
         self.wrappedValue = wrappedValue
     }
 }
@@ -66,20 +66,20 @@ public extension OmittedEncodingWrapper {
     func encode(to encoder: Encoder) throws {}
 }
 
-extension OmittedDecoding: Encodable, TransientEncodingWrapper where WrappedValue: Encodable {}
+extension OmittedDecoding: Encodable, TransientEncodingWrapper where T: Encodable {}
 
-extension OmittedEncoding: Decodable, TransientDecodingWrapper where WrappedValue: Decodable {}
+extension OmittedEncoding: Decodable, TransientDecodingWrapper where T: Decodable {}
 
-extension OmittedDecoding: Equatable where WrappedValue: Equatable {}
+extension OmittedDecoding: Equatable where T: Equatable {}
 
-extension OmittedEncoding: Equatable where WrappedValue: Equatable {}
+extension OmittedEncoding: Equatable where T: Equatable {}
 
-extension OmittedCoding: Equatable where WrappedValue: Equatable {}
+extension OmittedCoding: Equatable where T: Equatable {}
 
-extension OmittedDecoding: Hashable where WrappedValue: Hashable {}
+extension OmittedDecoding: Hashable where T: Hashable {}
 
-extension OmittedEncoding: Hashable where WrappedValue: Hashable {}
+extension OmittedEncoding: Hashable where T: Hashable {}
 
-extension OmittedCoding: Hashable where WrappedValue: Hashable {}
+extension OmittedCoding: Hashable where T: Hashable {}
 
 #endif

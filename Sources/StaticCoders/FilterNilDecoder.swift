@@ -31,7 +31,7 @@ public struct SetFilterNilStaticDecoder<T: Decodable>: StaticDecoder where T: Ha
     }
 }
 
-extension UnkeyedDecodingContainer {
+fileprivate extension UnkeyedDecodingContainer {
     mutating func filterNils<T: Decodable>() throws -> [T] {
         var elements: [T] = []
 

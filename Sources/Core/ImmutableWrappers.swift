@@ -42,9 +42,9 @@ public extension KeyedEncodingContainer {
     mutating func encode<T>(_ value: T, forKey key: KeyedEncodingContainer<K>.Key) throws where T: Encodable, T: AnyImmutableWrapper, T.T: OptionalEncodingWrapper {
         if case Optional<Any>.none = value.wrappedValue.wrappedValue as Any {
             return
+        } else {
+            try self.encodeIfPresent(value, forKey: key)
         }
-
-        try self.encodeIfPresent(value, forKey: key)
     }
 }
 
@@ -54,9 +54,9 @@ extension Immutable: Encodable, TransientEncodingWrapper where T: Encodable {}
 
 extension Immutable: TransientCodingWrapper where T: Codable {}
 
-extension Immutable: DecodingOptionalWrapper where T: Decodable & ExpressibleByNilLiteral {}
+extension Immutable: OptionalDecodingContainer where T: Decodable & ExpressibleByNilLiteral {}
 
-extension Immutable: EncodingOptionalWrapper where T: Encodable & ExpressibleByNilLiteral {}
+extension Immutable: OptionalEncodingContainer where T: Encodable & ExpressibleByNilLiteral {}
 
 extension Immutable: Equatable where T: Equatable {}
 

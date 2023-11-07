@@ -10,18 +10,18 @@
 import Foundation
 
 public protocol NonConformingBoolValueProvider {
-    associatedtype Value: Codable, Equatable
+    associatedtype Value: Codable
 
-    static func convertToBool(from value: Value) -> Bool?
-    static func convertToValue(from bool: Bool) -> Value
+    static func bool(from value: Value) -> Bool?
+    static func value(from bool: Bool) -> Value
 }
 
 public struct BoolAsIntegerValueProvider<Value>: NonConformingBoolValueProvider where Value: FixedWidthInteger & Codable {
-    public static func convertToBool(from value: Value) -> Bool? {
+    public static func bool(from value: Value) -> Bool? {
         return value > 0 ? true : false
     }
 
-    public static func convertToValue(from bool: Bool) -> Value {
+    public static func value(from bool: Bool) -> Value {
         return bool ? 1 : 0
     }
 }
@@ -29,7 +29,7 @@ public struct BoolAsIntegerValueProvider<Value>: NonConformingBoolValueProvider 
 public struct BoolAsStringValueProvider: NonConformingBoolValueProvider {
     public typealias Value = String
 
-    public static func convertToBool(from value: String) -> Bool? {
+    public static func bool(from value: String) -> Bool? {
         switch value.lowercased() {
             case "true":
                 return true
@@ -40,7 +40,7 @@ public struct BoolAsStringValueProvider: NonConformingBoolValueProvider {
         }
     }
 
-    public static func convertToValue(from bool: Bool) -> String {
+    public static func value(from bool: Bool) -> String {
         bool ? "true" : "false"
     }
 }
@@ -49,7 +49,7 @@ public struct NonConformingBoolStaticCoder<ValueProvider: NonConformingBoolValue
     public static func decode(from decoder: Decoder) throws -> Bool {
         let value = try ValueProvider.Value(from: decoder)
 
-        if let bool = ValueProvider.convertToBool(from: value) {
+        if let bool = ValueProvider.bool(from: value) {
             return bool
         } else {
             throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "failed to convert \(ValueProvider.Value.self) to Bool"))
@@ -57,7 +57,7 @@ public struct NonConformingBoolStaticCoder<ValueProvider: NonConformingBoolValue
     }
 
     public static func encode(value: Bool, to encoder: Encoder) throws {
-        try ValueProvider.convertToValue(from: value).encode(to: encoder)
+        try ValueProvider.value(from: value).encode(to: encoder)
     }
 }
 

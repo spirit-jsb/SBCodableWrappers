@@ -9,10 +9,6 @@
 
 import Foundation
 
-public typealias NonConformingBoolDecoding<ValueProvider: NonConformingBoolValueProvider> = StaticDecoding<NonConformingBoolStaticCoder<ValueProvider>>
-public typealias NonConformingBoolEncoding<ValueProvider: NonConformingBoolValueProvider> = StaticEncoding<NonConformingBoolStaticCoder<ValueProvider>>
-public typealias NonConformingBoolCoding<ValueProvider: NonConformingBoolValueProvider> = StaticCoding<NonConformingBoolStaticCoder<ValueProvider>>
-
 public typealias BoolAsIntDecoding = StaticDecoding<NonConformingBoolStaticCoder<BoolAsIntegerValueProvider<Int>>>
 public typealias BoolAsIntEncoding = StaticEncoding<NonConformingBoolStaticCoder<BoolAsIntegerValueProvider<Int>>>
 public typealias BoolAsIntCoding = StaticCoding<NonConformingBoolStaticCoder<BoolAsIntegerValueProvider<Int>>>
@@ -25,14 +21,6 @@ public typealias Base64Decoding = StaticDecoding<Base64DataStaticCoder>
 public typealias Base64Encoding = StaticEncoding<Base64DataStaticCoder>
 public typealias Base64Coding = StaticCoding<Base64DataStaticCoder>
 
-public typealias DateFormatterDecoding<CustomDecoder: DateFormatterStaticDecoder> = StaticDecoding<CustomDecoder>
-public typealias DateFormatterEncoding<CustomEncoder: DateFormatterStaticEncoder> = StaticEncoding<CustomEncoder>
-public typealias DateFormatterCoding<CustomCoder: DateFormatterStaticCoder> = StaticCoding<CustomCoder>
-
-public typealias ISO8601DateFormatterDecoding<CustomDecoder: ISO8601DateFormatterStaticDecoder> = StaticDecoding<CustomDecoder>
-public typealias ISO8601DateFormatterEncoding<CustomEncoder: ISO8601DateFormatterStaticEncoder> = StaticEncoding<CustomEncoder>
-public typealias ISO8601DateFormatterCoding<CustomCoder: ISO8601DateFormatterStaticCoder> = StaticCoding<CustomCoder>
-
 public typealias SecondsSince1970DateDecoding = StaticDecoding<SecondsSince1970DateStaticCoder>
 public typealias SecondsSince1970DateEncoding = StaticEncoding<SecondsSince1970DateStaticCoder>
 public typealias SecondsSince1970DateCoding = StaticCoding<SecondsSince1970DateStaticCoder>
@@ -44,6 +32,18 @@ public typealias MillisecondsSince1970DateCoding = StaticCoding<MillisecondsSinc
 public typealias ISO8601DateDecoding = StaticDecoding<ISO8601DateStaticCoder>
 public typealias ISO8601DateEncoding = StaticEncoding<ISO8601DateStaticCoder>
 public typealias ISO8601DateCoding = StaticCoding<ISO8601DateStaticCoder>
+
+public typealias NonConformingBoolDecoding<ValueProvider: NonConformingBoolValueProvider> = StaticDecoding<NonConformingBoolStaticCoder<ValueProvider>>
+public typealias NonConformingBoolEncoding<ValueProvider: NonConformingBoolValueProvider> = StaticEncoding<NonConformingBoolStaticCoder<ValueProvider>>
+public typealias NonConformingBoolCoding<ValueProvider: NonConformingBoolValueProvider> = StaticCoding<NonConformingBoolStaticCoder<ValueProvider>>
+
+public typealias DateFormatterDecoding<DateFormatterDecoder: DateFormatterStaticDecoder> = StaticDecoding<DateFormatterDecoder>
+public typealias DateFormatterEncoding<DateFormatterEncoder: DateFormatterStaticEncoder> = StaticEncoding<DateFormatterEncoder>
+public typealias DateFormatterCoding<DateFormatterCoder: DateFormatterStaticCoder> = StaticCoding<DateFormatterCoder>
+
+public typealias ISO8601DateFormatterDecoding<ISO8601DateFormatterDecoder: ISO8601DateFormatterStaticDecoder> = StaticDecoding<ISO8601DateFormatterDecoder>
+public typealias ISO8601DateFormatterEncoding<ISO8601DateFormatterEncoder: ISO8601DateFormatterStaticEncoder> = StaticEncoding<ISO8601DateFormatterEncoder>
+public typealias ISO8601DateFormatterCoding<ISO8601DateFormatterCoder: ISO8601DateFormatterStaticCoder> = StaticCoding<ISO8601DateFormatterCoder>
 
 public typealias LossyArrayDecoding<T: Decodable> = StaticDecoding<ArrayFilterNilStaticDecoder<T>>
 public typealias LossyDictionaryDecoding<T: Decodable, Key: Decodable & Hashable> = StaticDecoding<DictionaryFilterNilStaticDecoder<T, Key>>
