@@ -24,6 +24,7 @@
 		947EF0592AF9DBAF005F48FA /* NullEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0582AF9DBAF005F48FA /* NullEncoder.swift */; };
 		947EF05B2AF9E7C3005F48FA /* ConvenienceDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF05A2AF9E7C3005F48FA /* ConvenienceDefaultValues.swift */; };
 		947EF05F2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF05E2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift */; };
+		947EF0612AFA18DC005F48FA /* Base64CodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0602AFA18DC005F48FA /* Base64CodingTests.swift */; };
 		947EF0632AFA1AF9005F48FA /* CodingTestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0622AFA1AF9005F48FA /* CodingTestSpec.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		947EF0582AF9DBAF005F48FA /* NullEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullEncoder.swift; sourceTree = "<group>"; };
 		947EF05A2AF9E7C3005F48FA /* ConvenienceDefaultValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceDefaultValues.swift; sourceTree = "<group>"; };
 		947EF05E2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonConformingBoolCodingTests.swift; sourceTree = "<group>"; };
+		947EF0602AFA18DC005F48FA /* Base64CodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64CodingTests.swift; sourceTree = "<group>"; };
 		947EF0622AFA1AF9005F48FA /* CodingTestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingTestSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				947EF0622AFA1AF9005F48FA /* CodingTestSpec.swift */,
+				947EF0602AFA18DC005F48FA /* Base64CodingTests.swift */,
 				947EF05E2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift */,
 			);
 			name = Tests;
@@ -285,6 +288,7 @@
 			files = (
 				947EF05F2AFA0FEB005F48FA /* NonConformingBoolCodingTests.swift in Sources */,
 				947EF0632AFA1AF9005F48FA /* CodingTestSpec.swift in Sources */,
+				947EF0612AFA18DC005F48FA /* Base64CodingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
