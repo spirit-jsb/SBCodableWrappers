@@ -67,19 +67,14 @@ public extension OmittedEncodingWrapper {
 }
 
 extension OmittedDecoding: Encodable, TransientEncodingWrapper where T: Encodable {}
-
 extension OmittedEncoding: Decodable, TransientDecodingWrapper where T: Decodable {}
 
 extension OmittedDecoding: Equatable where T: Equatable {}
-
 extension OmittedEncoding: Equatable where T: Equatable {}
-
 extension OmittedCoding: Equatable where T: Equatable {}
 
 extension OmittedDecoding: Hashable where T: Hashable {}
-
 extension OmittedEncoding: Hashable where T: Hashable {}
-
 extension OmittedCoding: Hashable where T: Hashable {}
 
 #endif

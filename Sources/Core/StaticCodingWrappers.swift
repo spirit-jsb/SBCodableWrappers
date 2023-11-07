@@ -68,19 +68,14 @@ public extension StaticEncodingWrapper {
 }
 
 extension StaticDecoding: Encodable, TransientEncodingWrapper where CustomDecoder.DecodeValue: Encodable {}
-
 extension StaticEncoding: Decodable, TransientDecodingWrapper where CustomEncoder.EncodeValue: Decodable {}
 
 extension StaticDecoding: Equatable where CustomDecoder.DecodeValue: Equatable {}
-
 extension StaticEncoding: Equatable where CustomEncoder.EncodeValue: Equatable {}
-
 extension StaticCoding: Equatable where CustomCoder.CodeValue: Equatable {}
 
 extension StaticDecoding: Hashable where CustomDecoder.DecodeValue: Hashable {}
-
 extension StaticEncoding: Hashable where CustomEncoder.EncodeValue: Hashable {}
-
 extension StaticCoding: Hashable where CustomCoder.CodeValue: Hashable {}
 
 #endif

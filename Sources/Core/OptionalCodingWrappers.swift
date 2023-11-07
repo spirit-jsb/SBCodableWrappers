@@ -94,19 +94,14 @@ public extension OptionalEncodingWrapper {
 }
 
 extension OptionalDecoding: Encodable, TransientEncodingWrapper where CustomDecodingWrapper.CustomDecoder.DecodeValue: Encodable {}
-
 extension OptionalEncoding: Decodable, TransientDecodingWrapper where CustomEncodingWrapper.CustomEncoder.EncodeValue: Decodable {}
 
 extension OptionalDecoding: Equatable where CustomDecodingWrapper.CustomDecoder.DecodeValue: Equatable {}
-
 extension OptionalEncoding: Equatable where CustomEncodingWrapper.CustomEncoder.EncodeValue: Equatable {}
-
 extension OptionalCoding: Equatable where CustomCodingWrapper.CustomEncoder.EncodeValue: Equatable {}
 
 extension OptionalDecoding: Hashable where CustomDecodingWrapper.CustomDecoder.DecodeValue: Hashable {}
-
 extension OptionalEncoding: Hashable where CustomEncodingWrapper.CustomEncoder.EncodeValue: Hashable {}
-
 extension OptionalCoding: Hashable where CustomCodingWrapper.CustomEncoder.EncodeValue: Hashable {}
 
 #endif

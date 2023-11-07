@@ -85,19 +85,14 @@ public extension KeyedDecodingContainer {
 }
 
 extension FallbackDecoding: Encodable, TransientEncodingWrapper where ValueProvider.Value: Encodable {}
-
 extension FallbackEncoding: Decodable, TransientDecodingWrapper where ValueProvider.Value: Decodable {}
 
 extension FallbackDecoding: Equatable where ValueProvider.Value: Equatable {}
-
 extension FallbackEncoding: Equatable where ValueProvider.Value: Equatable {}
-
 extension FallbackCoding: Equatable where ValueProvider.Value: Equatable {}
 
 extension FallbackDecoding: Hashable where ValueProvider.Value: Hashable {}
-
 extension FallbackEncoding: Hashable where ValueProvider.Value: Hashable {}
-
 extension FallbackCoding: Hashable where ValueProvider.Value: Hashable {}
 
 #endif

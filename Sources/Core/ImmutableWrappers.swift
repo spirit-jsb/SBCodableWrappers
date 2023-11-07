@@ -49,13 +49,10 @@ public extension KeyedEncodingContainer {
 }
 
 extension Immutable: Decodable, TransientDecodingWrapper where T: Decodable {}
-
 extension Immutable: Encodable, TransientEncodingWrapper where T: Encodable {}
-
 extension Immutable: TransientCodingWrapper where T: Codable {}
 
 extension Immutable: OptionalDecodingContainer where T: Decodable & ExpressibleByNilLiteral {}
-
 extension Immutable: OptionalEncodingContainer where T: Encodable & ExpressibleByNilLiteral {}
 
 extension Immutable: Equatable where T: Equatable {}

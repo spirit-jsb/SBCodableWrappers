@@ -75,9 +75,7 @@ extension TransientEncoding: Decodable where T: Decodable {
 }
 
 extension TransientDecoding: Equatable where T: Equatable {}
-
 extension TransientEncoding: Equatable where T: Equatable {}
-
 extension TransientCoding: Equatable where T: Equatable {}
 
 #endif
