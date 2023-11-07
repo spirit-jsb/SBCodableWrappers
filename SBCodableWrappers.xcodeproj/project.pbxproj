@@ -23,6 +23,7 @@
 		9463A7C12AF4D5AD008287DB /* FilterNilDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7C02AF4D5AD008287DB /* FilterNilDecoder.swift */; };
 		9463A7C32AF4DA8A008287DB /* OptionalCodingWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7C22AF4DA8A008287DB /* OptionalCodingWrappers.swift */; };
 		947EF0592AF9DBAF005F48FA /* NullEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0582AF9DBAF005F48FA /* NullEncoder.swift */; };
+		947EF05B2AF9E7C3005F48FA /* ConvenienceDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF05A2AF9E7C3005F48FA /* ConvenienceDefaultValues.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		9463A7C02AF4D5AD008287DB /* FilterNilDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterNilDecoder.swift; sourceTree = "<group>"; };
 		9463A7C22AF4DA8A008287DB /* OptionalCodingWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalCodingWrappers.swift; sourceTree = "<group>"; };
 		947EF0582AF9DBAF005F48FA /* NullEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullEncoder.swift; sourceTree = "<group>"; };
+		947EF05A2AF9E7C3005F48FA /* ConvenienceDefaultValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceDefaultValues.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		942B2A8E2AF8C29200209BE2 /* Convenience */ = {
 			isa = PBXGroup;
 			children = (
+				947EF05A2AF9E7C3005F48FA /* ConvenienceDefaultValues.swift */,
 				942B2A8F2AF8C31900209BE2 /* ConvenienceWrappers.swift */,
 			);
 			path = Convenience;
@@ -267,6 +270,7 @@
 				942B2A8D2AF8932800209BE2 /* FallbackCodingWrappers.swift in Sources */,
 				9463A7B72AF49EA6008287DB /* TransientCodingWrappers.swift in Sources */,
 				9463A7B52AF49857008287DB /* StaticCoder.swift in Sources */,
+				947EF05B2AF9E7C3005F48FA /* ConvenienceDefaultValues.swift in Sources */,
 				942B2A892AF87A8F00209BE2 /* OmittedCodingWrappers.swift in Sources */,
 				9463A7B92AF4B472008287DB /* BoolCoder.swift in Sources */,
 			);
