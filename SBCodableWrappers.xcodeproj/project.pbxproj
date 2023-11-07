@@ -12,7 +12,6 @@
 		942B2A8D2AF8932800209BE2 /* FallbackCodingWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B2A8C2AF8932800209BE2 /* FallbackCodingWrappers.swift */; };
 		942B2A902AF8C31900209BE2 /* ConvenienceWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B2A8F2AF8C31900209BE2 /* ConvenienceWrappers.swift */; };
 		9463A7992AF4788A008287DB /* SBCodableWrappers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9463A7902AF4788A008287DB /* SBCodableWrappers.framework */; };
-		9463A7AF2AF47922008287DB /* SBCodableWrappersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7AE2AF47922008287DB /* SBCodableWrappersTests.swift */; };
 		9463A7B22AF496AB008287DB /* StaticCodingWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7B12AF496AB008287DB /* StaticCodingWrappers.swift */; };
 		9463A7B52AF49857008287DB /* StaticCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7B42AF49857008287DB /* StaticCoder.swift */; };
 		9463A7B72AF49EA6008287DB /* TransientCodingWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7B62AF49EA6008287DB /* TransientCodingWrappers.swift */; };
@@ -24,6 +23,7 @@
 		9463A7C32AF4DA8A008287DB /* OptionalCodingWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463A7C22AF4DA8A008287DB /* OptionalCodingWrappers.swift */; };
 		947EF0592AF9DBAF005F48FA /* NullEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0582AF9DBAF005F48FA /* NullEncoder.swift */; };
 		947EF05B2AF9E7C3005F48FA /* ConvenienceDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF05A2AF9E7C3005F48FA /* ConvenienceDefaultValues.swift */; };
+		947EF0632AFA1AF9005F48FA /* CodingTestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947EF0622AFA1AF9005F48FA /* CodingTestSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,6 @@
 		942B2A8F2AF8C31900209BE2 /* ConvenienceWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceWrappers.swift; sourceTree = "<group>"; };
 		9463A7902AF4788A008287DB /* SBCodableWrappers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SBCodableWrappers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9463A7982AF4788A008287DB /* SBCodableWrappersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SBCodableWrappersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9463A7AE2AF47922008287DB /* SBCodableWrappersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SBCodableWrappersTests.swift; path = Tests/SBCodableWrappersTests.swift; sourceTree = "<group>"; };
 		9463A7B12AF496AB008287DB /* StaticCodingWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCodingWrappers.swift; sourceTree = "<group>"; };
 		9463A7B42AF49857008287DB /* StaticCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCoder.swift; sourceTree = "<group>"; };
 		9463A7B62AF49EA6008287DB /* TransientCodingWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransientCodingWrappers.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		9463A7C22AF4DA8A008287DB /* OptionalCodingWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalCodingWrappers.swift; sourceTree = "<group>"; };
 		947EF0582AF9DBAF005F48FA /* NullEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullEncoder.swift; sourceTree = "<group>"; };
 		947EF05A2AF9E7C3005F48FA /* ConvenienceDefaultValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceDefaultValues.swift; sourceTree = "<group>"; };
+		947EF0622AFA1AF9005F48FA /* CodingTestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingTestSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +116,7 @@
 		9463A7AA2AF4790E008287DB /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9463A7AE2AF47922008287DB /* SBCodableWrappersTests.swift */,
+				947EF0622AFA1AF9005F48FA /* CodingTestSpec.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -280,7 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9463A7AF2AF47922008287DB /* SBCodableWrappersTests.swift in Sources */,
+				947EF0632AFA1AF9005F48FA /* CodingTestSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
