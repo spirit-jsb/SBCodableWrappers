@@ -78,4 +78,8 @@ extension TransientDecoding: Equatable where T: Equatable {}
 extension TransientEncoding: Equatable where T: Equatable {}
 extension TransientCoding: Equatable where T: Equatable {}
 
+extension TransientDecoding: OptionalDecodingContainer where T: ExpressibleByNilLiteral {}
+extension TransientEncoding: OptionalEncodingContainer where T: ExpressibleByNilLiteral {}
+extension TransientCoding: OptionalCodingContainer where T: ExpressibleByNilLiteral {}
+
 #endif

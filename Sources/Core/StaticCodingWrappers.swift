@@ -78,4 +78,8 @@ extension StaticDecoding: Hashable where CustomDecoder.DecodeValue: Hashable {}
 extension StaticEncoding: Hashable where CustomEncoder.EncodeValue: Hashable {}
 extension StaticCoding: Hashable where CustomCoder.CodeValue: Hashable {}
 
+extension StaticDecoding: OptionalDecodingContainer where CustomDecoder.DecodeValue: ExpressibleByNilLiteral {}
+extension StaticEncoding: OptionalEncodingContainer where CustomEncoder.EncodeValue: ExpressibleByNilLiteral {}
+extension StaticCoding: OptionalCodingContainer where CustomCoder.CodeValue: ExpressibleByNilLiteral {}
+
 #endif
