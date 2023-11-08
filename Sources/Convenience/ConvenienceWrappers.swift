@@ -57,4 +57,6 @@ public typealias NonConformingDoubleDecoding<ValueProvider: NonConformingDecimal
 public typealias NonConformingDoubleEncoding<ValueProvider: NonConformingDecimalValueProvider> = StaticEncoding<NonConformingDoubleStaticCoder<ValueProvider>>
 public typealias NonConformingDoubleCoding<ValueProvider: NonConformingDecimalValueProvider> = StaticCoding<NonConformingDoubleStaticCoder<ValueProvider>>
 
+public typealias NullEncoding<T: Encodable & ExpressibleByNilLiteral> = StaticEncoding<NullStaticEncoder<T>>
+
 #endif
