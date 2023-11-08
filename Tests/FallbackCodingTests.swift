@@ -12,57 +12,53 @@ final class FallbackCodingTests: XCTestCase, DecodingTestSpec, EncodingTestSpec 
     func testFallbackDecoderUsingJSON() {
         XCTAssertNoThrow(try FallbackCodingTests.jsonDecoder.decode(FallbackModel.self, from: FallbackCodingTests.emptyJSON.data(using: .utf8)!))
 
-        let fallbackModel = try? FallbackCodingTests.jsonDecoder.decode(FallbackModel.self, from: FallbackCodingTests.emptyJSON.data(using: .utf8)!)
-        XCTAssertNotNil(fallbackModel)
-        XCTAssertEqual(fallbackModel, fallbackExpectModel)
+        let emptyFallbackModel = try? FallbackCodingTests.jsonDecoder.decode(FallbackModel.self, from: FallbackCodingTests.emptyJSON.data(using: .utf8)!)
+        XCTAssertNotNil(emptyFallbackModel)
+        XCTAssertEqual(emptyFallbackModel, fallbackExpectedModel)
 
-        XCTAssertNoThrow(try FallbackCodingTests.jsonDecoder.decode(FallbackModel.self, from: unfallbackJSON.data(using: .utf8)!))
+        XCTAssertNoThrow(try FallbackCodingTests.jsonDecoder.decode(FallbackModel.self, from: noneFallbackJSON.data(using: .utf8)!))
 
-        let unfallbackModel = try? FallbackCodingTests.jsonDecoder.decode(FallbackModel.self, from: unfallbackJSON.data(using: .utf8)!)
-        XCTAssertNotNil(unfallbackModel)
-        XCTAssertEqual(unfallbackModel, unfallbackExpectModel)
-        
+        let noneFallbackModel = try? FallbackCodingTests.jsonDecoder.decode(FallbackModel.self, from: noneFallbackJSON.data(using: .utf8)!)
+        XCTAssertNotNil(noneFallbackModel)
+        XCTAssertEqual(noneFallbackModel, noneFallbackExpectedModel)
+
         XCTAssertNoThrow(try FallbackCodingTests.jsonDecoder.decode(TestableFallbackModel.self, from: FallbackCodingTests.emptyJSON.data(using: .utf8)!))
 
-        let testableFallbackModel = try? FallbackCodingTests.jsonDecoder.decode(TestableFallbackModel.self, from: FallbackCodingTests.emptyJSON.data(using: .utf8)!)
-        XCTAssertNotNil(testableFallbackModel)
-        XCTAssertEqual(testableFallbackModel, testableFallbackExpectModel)
+        let emptyTestableFallbackModel = try? FallbackCodingTests.jsonDecoder.decode(TestableFallbackModel.self, from: FallbackCodingTests.emptyJSON.data(using: .utf8)!)
+        XCTAssertNotNil(emptyTestableFallbackModel)
+        XCTAssertEqual(emptyTestableFallbackModel, testableFallbackExpectedModel)
 
-        XCTAssertNoThrow(try FallbackCodingTests.jsonDecoder.decode(TestableFallbackModel.self, from: testableUnfallbackJSON.data(using: .utf8)!))
+        XCTAssertNoThrow(try FallbackCodingTests.jsonDecoder.decode(TestableFallbackModel.self, from: testableNoneFallbackJSON.data(using: .utf8)!))
 
-        let testableUnfallbackModel = try? FallbackCodingTests.jsonDecoder.decode(TestableFallbackModel.self, from: testableUnfallbackJSON.data(using: .utf8)!)
-        XCTAssertNotNil(testableUnfallbackModel)
-        XCTAssertEqual(testableUnfallbackModel, testableUnfallbackExpectModel)
+        let testableNoneFallbackModel = try? FallbackCodingTests.jsonDecoder.decode(TestableFallbackModel.self, from: testableNoneFallbackJSON.data(using: .utf8)!)
+        XCTAssertNotNil(testableNoneFallbackModel)
+        XCTAssertEqual(testableNoneFallbackModel, testableNoneFallbackExpectedModel)
     }
 
     func testFallbackEncoderUsingJSON() {
         XCTAssertNoThrow(try FallbackCodingTests.jsonEncoder.encode(fallbackEmptyModel))
 
-        let fallbackExpectData = try? FallbackCodingTests.jsonEncoder.encode(fallbackEmptyModel)
-        let fallbackExpectString = fallbackExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(fallbackExpectData)
-        XCTAssertNotNil(fallbackExpectString)
+        let fallbackJSON = (try? FallbackCodingTests.jsonEncoder.encode(fallbackEmptyModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(fallbackJSON)
+        XCTAssertEqual(fallbackJSON, fallbackExpectedJSON)
 
-        XCTAssertNoThrow(try FallbackCodingTests.jsonEncoder.encode(unfallbackExpectModel))
+        XCTAssertNoThrow(try FallbackCodingTests.jsonEncoder.encode(noneFallbackExpectedModel))
 
-        let unfallbackExpectData = try? FallbackCodingTests.jsonEncoder.encode(unfallbackExpectModel)
-        let unfallbackExpectString = unfallbackExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(unfallbackExpectData)
-        XCTAssertNotNil(unfallbackExpectString)
-        
+        let noneFallbackJSON = (try? FallbackCodingTests.jsonEncoder.encode(noneFallbackExpectedModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(noneFallbackJSON)
+        XCTAssertEqual(noneFallbackJSON, noneFallbackExpectedJSON)
+
         XCTAssertNoThrow(try FallbackCodingTests.jsonEncoder.encode(testableFallbackEmptyModel))
 
-        let testableFallbackExpectData = try? FallbackCodingTests.jsonEncoder.encode(testableFallbackEmptyModel)
-        let testableFallbackExpectString = testableFallbackExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(testableFallbackExpectData)
-        XCTAssertNotNil(testableFallbackExpectString)
+        let testableFallbackJSON = (try? FallbackCodingTests.jsonEncoder.encode(testableFallbackEmptyModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(testableFallbackJSON)
+        XCTAssertEqual(testableFallbackJSON, testableFallbackExpectedJSON)
 
-        XCTAssertNoThrow(try FallbackCodingTests.jsonEncoder.encode(testableUnfallbackExpectModel))
+        XCTAssertNoThrow(try FallbackCodingTests.jsonEncoder.encode(testableNoneFallbackExpectedModel))
 
-        let testableUnfallbackExpectData = try? FallbackCodingTests.jsonEncoder.encode(testableUnfallbackExpectModel)
-        let testableUnfallbackExpectString = testableUnfallbackExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(testableUnfallbackExpectData)
-        XCTAssertNotNil(testableUnfallbackExpectString)
+        let testableNoneFallbackJSON = (try? FallbackCodingTests.jsonEncoder.encode(testableNoneFallbackExpectedModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(testableNoneFallbackJSON)
+        XCTAssertEqual(testableNoneFallbackJSON, testableNoneFallbackExpectedJSON)
     }
 }
 
@@ -92,11 +88,13 @@ private struct FallbackModel: Codable, Equatable {
     var setValue: Set<String>?
 }
 
-private let fallbackExpectModel = FallbackModel(boolValue: false, intValue: 0, doubleValue: 0.0, floatValue: 0.0, stringValue: "", arrayValue: [], dictionaryValue: [:], setValue: [])
 private let fallbackEmptyModel = FallbackModel(boolValue: nil, intValue: nil, doubleValue: nil, floatValue: nil, stringValue: nil, arrayValue: nil, dictionaryValue: nil, setValue: nil)
-private let unfallbackExpectModel = FallbackModel(boolValue: true, intValue: 1, doubleValue: 1.0, floatValue: 1.0, stringValue: "1", arrayValue: [1], dictionaryValue: ["1": 1], setValue: ["1"])
+private let fallbackExpectedModel = FallbackModel(boolValue: false, intValue: 0, doubleValue: 0.0, floatValue: 0.0, stringValue: "", arrayValue: [], dictionaryValue: [:], setValue: [])
+private let noneFallbackExpectedModel = FallbackModel(boolValue: true, intValue: 1, doubleValue: 1.0, floatValue: 1.0, stringValue: "1", arrayValue: [1], dictionaryValue: ["1": 1], setValue: ["1"])
 
-private let unfallbackJSON = """
+private let fallbackExpectedJSON = "{\"arrayValue\":[],\"boolValue\":false,\"dictionaryValue\":{},\"doubleValue\":0,\"floatValue\":0,\"intValue\":0,\"setValue\":[],\"stringValue\":\"\"}"
+
+private let noneFallbackJSON = """
     {
         "boolValue": true,
         "intValue": 1,
@@ -114,6 +112,8 @@ private let unfallbackJSON = """
         ]
     }
     """
+
+private let noneFallbackExpectedJSON = "{\"arrayValue\":[1],\"boolValue\":true,\"dictionaryValue\":{\"1\":1},\"doubleValue\":1,\"floatValue\":1,\"intValue\":1,\"setValue\":[\"1\"],\"stringValue\":\"1\"}"
 
 private struct TestableFallbackValueProvider: FallbackValueProvider {
     static var defaultValue: String {
@@ -126,25 +126,16 @@ private struct TestableFallbackModel: Codable, Equatable {
     var stringValue: String?
 }
 
-private let testableFallbackExpectModel = TestableFallbackModel(stringValue: "Hello World!")
 private let testableFallbackEmptyModel = TestableFallbackModel(stringValue: nil)
-private let testableUnfallbackExpectModel = TestableFallbackModel(stringValue: "1")
+private let testableFallbackExpectedModel = TestableFallbackModel(stringValue: "Hello World!")
+private let testableNoneFallbackExpectedModel = TestableFallbackModel(stringValue: "1")
 
-private let testableUnfallbackJSON = """
+private let testableFallbackExpectedJSON = "{\"stringValue\":\"Hello World!\"}"
+
+private let testableNoneFallbackJSON = """
     {
-        "boolValue": true,
-        "intValue": 1,
-        "doubleValue": 1.0,
-        "floatValue": 1.0,
-        "stringValue": "1",
-        "arrayValue": [
-            1
-        ],
-        "dictionaryValue": {
-            "1": 1
-        },
-        "setValue": [
-            "1"
-        ]
+        "stringValue": "1"
     }
     """
+
+private let testableNoneFallbackExpectedJSON = "{\"stringValue\":\"1\"}"

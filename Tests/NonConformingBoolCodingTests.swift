@@ -14,29 +14,27 @@ final class NonConformingBoolCodingTests: XCTestCase, DecodingTestSpec, Encoding
 
         let trueAsIntegerModel = try? NonConformingBoolCodingTests.jsonDecoder.decode(BoolAsIntegerModel.self, from: boolAsIntegerJSON(intValue: 1).data(using: .utf8)!)
         XCTAssertNotNil(trueAsIntegerModel)
-        XCTAssertEqual(trueAsIntegerModel, trueAsIntegerExpectModel)
+        XCTAssertEqual(trueAsIntegerModel, trueAsIntegerExpectedModel)
 
         XCTAssertNoThrow(try NonConformingBoolCodingTests.jsonDecoder.decode(BoolAsIntegerModel.self, from: boolAsIntegerJSON(intValue: 0).data(using: .utf8)!))
 
         let falseAsIntegerModel = try? NonConformingBoolCodingTests.jsonDecoder.decode(BoolAsIntegerModel.self, from: boolAsIntegerJSON(intValue: 0).data(using: .utf8)!)
         XCTAssertNotNil(falseAsIntegerModel)
-        XCTAssertEqual(falseAsIntegerModel, falseAsIntegerExpectModel)
+        XCTAssertEqual(falseAsIntegerModel, falseAsIntegerExpectedModel)
     }
 
     func testBoolAsIntegerEncoderUsingJSON() {
-        XCTAssertNoThrow(try NonConformingBoolCodingTests.jsonEncoder.encode(trueAsIntegerExpectModel))
+        XCTAssertNoThrow(try NonConformingBoolCodingTests.jsonEncoder.encode(trueAsIntegerExpectedModel))
 
-        let trueAsIntegerExpectData = try? NonConformingBoolCodingTests.jsonEncoder.encode(trueAsIntegerExpectModel)
-        let trueAsIntegerExpectString = trueAsIntegerExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(trueAsIntegerExpectData)
-        XCTAssertNotNil(trueAsIntegerExpectString)
+        let trueAsIntegerJSON = (try? NonConformingBoolCodingTests.jsonEncoder.encode(trueAsIntegerExpectedModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(trueAsIntegerJSON)
+        XCTAssertEqual(trueAsIntegerJSON, boolAsIntegerExpectedJSON(intValue: 1))
 
-        XCTAssertNoThrow(try NonConformingBoolCodingTests.jsonEncoder.encode(falseAsIntegerExpectModel))
+        XCTAssertNoThrow(try NonConformingBoolCodingTests.jsonEncoder.encode(falseAsIntegerExpectedModel))
 
-        let falseAsIntegerExpectData = try? NonConformingBoolCodingTests.jsonEncoder.encode(falseAsIntegerExpectModel)
-        let falseAsIntegerExpectString = falseAsIntegerExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(falseAsIntegerExpectData)
-        XCTAssertNotNil(falseAsIntegerExpectString)
+        let falseAsIntegerJSON = (try? NonConformingBoolCodingTests.jsonEncoder.encode(falseAsIntegerExpectedModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(falseAsIntegerJSON)
+        XCTAssertEqual(falseAsIntegerJSON, boolAsIntegerExpectedJSON(intValue: 0))
     }
 
     func testBoolAsIntegerDecoderUsingXML() {
@@ -44,29 +42,27 @@ final class NonConformingBoolCodingTests: XCTestCase, DecodingTestSpec, Encoding
 
         let trueAsIntegerModel = try? NonConformingBoolCodingTests.plistDecoder.decode(BoolAsIntegerModel.self, from: boolAsIntegerXML(intValue: 1).data(using: .utf8)!)
         XCTAssertNotNil(trueAsIntegerModel)
-        XCTAssertEqual(trueAsIntegerModel, trueAsIntegerExpectModel)
+        XCTAssertEqual(trueAsIntegerModel, trueAsIntegerExpectedModel)
 
         XCTAssertNoThrow(try NonConformingBoolCodingTests.plistDecoder.decode(BoolAsIntegerModel.self, from: boolAsIntegerXML(intValue: 0).data(using: .utf8)!))
 
         let falseAsIntegerModel = try? NonConformingBoolCodingTests.plistDecoder.decode(BoolAsIntegerModel.self, from: boolAsIntegerXML(intValue: 0).data(using: .utf8)!)
         XCTAssertNotNil(falseAsIntegerModel)
-        XCTAssertEqual(falseAsIntegerModel, falseAsIntegerExpectModel)
+        XCTAssertEqual(falseAsIntegerModel, falseAsIntegerExpectedModel)
     }
 
     func testBoolAsIntegerEncoderUsingXML() {
-        XCTAssertNoThrow(try NonConformingBoolCodingTests.plistEncoder.encode(trueAsIntegerExpectModel))
+        XCTAssertNoThrow(try NonConformingBoolCodingTests.plistEncoder.encode(trueAsIntegerExpectedModel))
 
-        let trueAsIntegerExpectData = try? NonConformingBoolCodingTests.plistEncoder.encode(trueAsIntegerExpectModel)
-        let trueAsIntegerExpectString = trueAsIntegerExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(trueAsIntegerExpectData)
-        XCTAssertNotNil(trueAsIntegerExpectString)
+        let trueAsIntegerXML = (try? NonConformingBoolCodingTests.plistEncoder.encode(trueAsIntegerExpectedModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(trueAsIntegerXML)
+        XCTAssertEqual(trueAsIntegerXML, boolAsIntegerExpectedXML(intValue: 1))
 
-        XCTAssertNoThrow(try NonConformingBoolCodingTests.plistEncoder.encode(falseAsIntegerExpectModel))
+        XCTAssertNoThrow(try NonConformingBoolCodingTests.plistEncoder.encode(falseAsIntegerExpectedModel))
 
-        let falseAsIntegerExpectData = try? NonConformingBoolCodingTests.plistEncoder.encode(falseAsIntegerExpectModel)
-        let falseAsIntegerExpectString = falseAsIntegerExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(falseAsIntegerExpectData)
-        XCTAssertNotNil(falseAsIntegerExpectString)
+        let falseAsIntegerXML = (try? NonConformingBoolCodingTests.plistEncoder.encode(falseAsIntegerExpectedModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(falseAsIntegerXML)
+        XCTAssertEqual(falseAsIntegerXML, boolAsIntegerExpectedXML(intValue: 0))
     }
 
     func testBoolAsStringDecoderUsingJSON() {
@@ -74,41 +70,39 @@ final class NonConformingBoolCodingTests: XCTestCase, DecodingTestSpec, Encoding
 
         let trueAsStringModel = try? NonConformingBoolCodingTests.jsonDecoder.decode(BoolAsStringModel.self, from: boolAsStringJSON(stringValue: "true").data(using: .utf8)!)
         XCTAssertNotNil(trueAsStringModel)
-        XCTAssertEqual(trueAsStringModel, trueAsStringExpectModel)
+        XCTAssertEqual(trueAsStringModel, trueAsStringExpectedModel)
 
         XCTAssertNoThrow(try NonConformingBoolCodingTests.jsonDecoder.decode(BoolAsStringModel.self, from: boolAsStringJSON(stringValue: "TRUE").data(using: .utf8)!))
 
         let TRUEAsStringModel = try? NonConformingBoolCodingTests.jsonDecoder.decode(BoolAsStringModel.self, from: boolAsStringJSON(stringValue: "TRUE").data(using: .utf8)!)
         XCTAssertNotNil(TRUEAsStringModel)
-        XCTAssertEqual(TRUEAsStringModel, trueAsStringExpectModel)
+        XCTAssertEqual(TRUEAsStringModel, trueAsStringExpectedModel)
 
         XCTAssertNoThrow(try NonConformingBoolCodingTests.jsonDecoder.decode(BoolAsStringModel.self, from: boolAsStringJSON(stringValue: "false").data(using: .utf8)!))
 
         let falseAsStringModel = try? NonConformingBoolCodingTests.jsonDecoder.decode(BoolAsStringModel.self, from: boolAsStringJSON(stringValue: "false").data(using: .utf8)!)
         XCTAssertNotNil(falseAsStringModel)
-        XCTAssertEqual(falseAsStringModel, falseAsStringExpectModel)
+        XCTAssertEqual(falseAsStringModel, falseAsStringExpectedModel)
 
         XCTAssertNoThrow(try NonConformingBoolCodingTests.jsonDecoder.decode(BoolAsStringModel.self, from: boolAsStringJSON(stringValue: "FALSE").data(using: .utf8)!))
 
         let FALSEAsStringModel = try? NonConformingBoolCodingTests.jsonDecoder.decode(BoolAsStringModel.self, from: boolAsStringJSON(stringValue: "FALSE").data(using: .utf8)!)
         XCTAssertNotNil(FALSEAsStringModel)
-        XCTAssertEqual(FALSEAsStringModel, falseAsStringExpectModel)
+        XCTAssertEqual(FALSEAsStringModel, falseAsStringExpectedModel)
     }
 
     func testBoolAsStringEncoderUsingJSON() {
-        XCTAssertNoThrow(try NonConformingBoolCodingTests.jsonEncoder.encode(trueAsStringExpectModel))
+        XCTAssertNoThrow(try NonConformingBoolCodingTests.jsonEncoder.encode(trueAsStringExpectedModel))
 
-        let trueAsStringExpectData = try? NonConformingBoolCodingTests.jsonEncoder.encode(trueAsStringExpectModel)
-        let trueAsStringExpectString = trueAsStringExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(trueAsStringExpectData)
-        XCTAssertNotNil(trueAsStringExpectString)
+        let trueAsStringJSON = (try? NonConformingBoolCodingTests.jsonEncoder.encode(trueAsStringExpectedModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(trueAsStringJSON)
+        XCTAssertEqual(trueAsStringJSON, boolAsStringExpectedJSON(stringValue: "true"))
 
-        XCTAssertNoThrow(try NonConformingBoolCodingTests.jsonEncoder.encode(falseAsStringExpectModel))
+        XCTAssertNoThrow(try NonConformingBoolCodingTests.jsonEncoder.encode(falseAsStringExpectedModel))
 
-        let falseAsStringExpectData = try? NonConformingBoolCodingTests.jsonEncoder.encode(falseAsStringExpectModel)
-        let falseAsStringExpectString = falseAsStringExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(falseAsStringExpectData)
-        XCTAssertNotNil(falseAsStringExpectString)
+        let falseAsStringJSON = (try? NonConformingBoolCodingTests.jsonEncoder.encode(falseAsStringExpectedModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(falseAsStringJSON)
+        XCTAssertEqual(falseAsStringJSON, boolAsStringExpectedJSON(stringValue: "false"))
     }
 
     func testBoolAsStringDecoderUsingXML() {
@@ -116,41 +110,39 @@ final class NonConformingBoolCodingTests: XCTestCase, DecodingTestSpec, Encoding
 
         let trueAsStringModel = try? NonConformingBoolCodingTests.plistDecoder.decode(BoolAsStringModel.self, from: boolAsStringXML(stringValue: "true").data(using: .utf8)!)
         XCTAssertNotNil(trueAsStringModel)
-        XCTAssertEqual(trueAsStringModel, trueAsStringExpectModel)
+        XCTAssertEqual(trueAsStringModel, trueAsStringExpectedModel)
 
         XCTAssertNoThrow(try NonConformingBoolCodingTests.plistDecoder.decode(BoolAsStringModel.self, from: boolAsStringXML(stringValue: "TRUE").data(using: .utf8)!))
 
         let TRUEAsStringModel = try? NonConformingBoolCodingTests.plistDecoder.decode(BoolAsStringModel.self, from: boolAsStringXML(stringValue: "TRUE").data(using: .utf8)!)
         XCTAssertNotNil(TRUEAsStringModel)
-        XCTAssertEqual(TRUEAsStringModel, trueAsStringExpectModel)
+        XCTAssertEqual(TRUEAsStringModel, trueAsStringExpectedModel)
 
         XCTAssertNoThrow(try NonConformingBoolCodingTests.plistDecoder.decode(BoolAsStringModel.self, from: boolAsStringXML(stringValue: "false").data(using: .utf8)!))
 
         let falseAsStringModel = try? NonConformingBoolCodingTests.plistDecoder.decode(BoolAsStringModel.self, from: boolAsStringXML(stringValue: "false").data(using: .utf8)!)
         XCTAssertNotNil(falseAsStringModel)
-        XCTAssertEqual(falseAsStringModel, falseAsStringExpectModel)
+        XCTAssertEqual(falseAsStringModel, falseAsStringExpectedModel)
 
         XCTAssertNoThrow(try NonConformingBoolCodingTests.plistDecoder.decode(BoolAsStringModel.self, from: boolAsStringXML(stringValue: "FALSE").data(using: .utf8)!))
 
         let FALSEAsStringModel = try? NonConformingBoolCodingTests.plistDecoder.decode(BoolAsStringModel.self, from: boolAsStringXML(stringValue: "FALSE").data(using: .utf8)!)
         XCTAssertNotNil(FALSEAsStringModel)
-        XCTAssertEqual(FALSEAsStringModel, falseAsStringExpectModel)
+        XCTAssertEqual(FALSEAsStringModel, falseAsStringExpectedModel)
     }
 
     func testBoolAsStringEncoderUsingXML() {
-        XCTAssertNoThrow(try NonConformingBoolCodingTests.plistEncoder.encode(trueAsStringExpectModel))
+        XCTAssertNoThrow(try NonConformingBoolCodingTests.plistEncoder.encode(trueAsStringExpectedModel))
 
-        let trueAsStringExpectData = try? NonConformingBoolCodingTests.plistEncoder.encode(trueAsStringExpectModel)
-        let trueAsStringExpectString = trueAsStringExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(trueAsStringExpectData)
-        XCTAssertNotNil(trueAsStringExpectString)
+        let trueAsStringXML = (try? NonConformingBoolCodingTests.plistEncoder.encode(trueAsStringExpectedModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(trueAsStringXML)
+        XCTAssertEqual(trueAsStringXML, boolAsStringExpectedXML(stringValue: "true"))
 
-        XCTAssertNoThrow(try NonConformingBoolCodingTests.plistEncoder.encode(falseAsStringExpectModel))
+        XCTAssertNoThrow(try NonConformingBoolCodingTests.plistEncoder.encode(falseAsStringExpectedModel))
 
-        let falseAsStringExpectData = try? NonConformingBoolCodingTests.plistEncoder.encode(falseAsStringExpectModel)
-        let falseAsStringExpectString = falseAsStringExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(falseAsStringExpectData)
-        XCTAssertNotNil(falseAsStringExpectString)
+        let falseAsStringXML = (try? NonConformingBoolCodingTests.plistEncoder.encode(falseAsStringExpectedModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(falseAsStringXML)
+        XCTAssertEqual(falseAsStringXML, boolAsStringExpectedXML(stringValue: "false"))
     }
 }
 
@@ -159,8 +151,8 @@ private struct BoolAsIntegerModel: Codable, Equatable {
     var boolValue: Bool
 }
 
-private let trueAsIntegerExpectModel = BoolAsIntegerModel(boolValue: true)
-private let falseAsIntegerExpectModel = BoolAsIntegerModel(boolValue: false)
+private let trueAsIntegerExpectedModel = BoolAsIntegerModel(boolValue: true)
+private let falseAsIntegerExpectedModel = BoolAsIntegerModel(boolValue: false)
 
 private func boolAsIntegerJSON(intValue: Int) -> String { """
     {
@@ -169,25 +161,29 @@ private func boolAsIntegerJSON(intValue: Int) -> String { """
     """
 }
 
+private func boolAsIntegerExpectedJSON(intValue: Int) -> String { "{\"boolValue\":\(intValue)}" }
+
 private func boolAsIntegerXML(intValue: Int) -> String { """
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
-            <dict>
-                    <key>boolValue</key>
-                    <integer>\(intValue)</integer>
-            </dict>
+        <dict>
+            <key>boolValue</key>
+            <integer>\(intValue)</integer>
+        </dict>
     </plist>
     """
 }
+
+private func boolAsIntegerExpectedXML(intValue: Int) -> String { "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n\t<key>boolValue</key>\n\t<integer>\(intValue)</integer>\n</dict>\n</plist>\n" }
 
 private struct BoolAsStringModel: Codable, Equatable {
     @BoolAsStringCoding
     var boolValue: Bool
 }
 
-private let trueAsStringExpectModel = BoolAsStringModel(boolValue: true)
-private let falseAsStringExpectModel = BoolAsStringModel(boolValue: false)
+private let trueAsStringExpectedModel = BoolAsStringModel(boolValue: true)
+private let falseAsStringExpectedModel = BoolAsStringModel(boolValue: false)
 
 private func boolAsStringJSON(stringValue: String) -> String { """
     {
@@ -196,14 +192,18 @@ private func boolAsStringJSON(stringValue: String) -> String { """
     """
 }
 
+private func boolAsStringExpectedJSON(stringValue: String) -> String { "{\"boolValue\":\"\(stringValue)\"}" }
+
 private func boolAsStringXML(stringValue: String) -> String { """
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
-            <dict>
-                    <key>boolValue</key>
-                    <string>\(stringValue)</string>
-            </dict>
+        <dict>
+            <key>boolValue</key>
+            <string>\(stringValue)</string>
+        </dict>
     </plist>
     """
 }
+
+private func boolAsStringExpectedXML(stringValue: String) -> String { "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n\t<key>boolValue</key>\n\t<string>\(stringValue)</string>\n</dict>\n</plist>\n" }

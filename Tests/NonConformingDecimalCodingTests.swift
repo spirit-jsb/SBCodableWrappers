@@ -14,19 +14,18 @@ final class NonConformingDecimalCodingTests: XCTestCase, DecodingTestSpec, Encod
 
         let nonConformingFloatModel = try? NonConformingDecimalCodingTests.jsonDecoder.decode(NonConformingFloatModel.self, from: nonConformingFloatJSON.data(using: .utf8)!)
         XCTAssertNotNil(nonConformingFloatModel)
-        XCTAssertEqual(nonConformingFloatModel?.positive, nonConformingFloatExpectModel.positive)
-        XCTAssertEqual(nonConformingFloatModel?.negative, nonConformingFloatExpectModel.negative)
+        XCTAssertEqual(nonConformingFloatModel?.positive, nonConformingFloatExpectedModel.positive)
+        XCTAssertEqual(nonConformingFloatModel?.negative, nonConformingFloatExpectedModel.negative)
         XCTAssertEqual(nonConformingFloatModel?.nan.isNaN, true)
-        XCTAssertEqual(nonConformingFloatModel?.regular, nonConformingFloatExpectModel.regular)
+        XCTAssertEqual(nonConformingFloatModel?.regular, nonConformingFloatExpectedModel.regular)
     }
 
     func testNonConformingFloatEncoderUsingJSON() {
-        XCTAssertNoThrow(try NonConformingDecimalCodingTests.jsonEncoder.encode(nonConformingFloatExpectModel))
+        XCTAssertNoThrow(try NonConformingDecimalCodingTests.jsonEncoder.encode(nonConformingFloatExpectedModel))
 
-        let nonConformingFloatExpectData = try? NonConformingDecimalCodingTests.jsonEncoder.encode(nonConformingFloatExpectModel)
-        let nonConformingFloatExpectString = nonConformingFloatExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(nonConformingFloatExpectData)
-        XCTAssertNotNil(nonConformingFloatExpectString)
+        let nonConformingFloatJSON = (try? NonConformingDecimalCodingTests.jsonEncoder.encode(nonConformingFloatExpectedModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(nonConformingFloatJSON)
+        XCTAssertEqual(nonConformingFloatJSON, nonConformingFloatExpectedJSON)
     }
 
     func testNonConformingFloatDecoderUsingXML() {
@@ -34,19 +33,18 @@ final class NonConformingDecimalCodingTests: XCTestCase, DecodingTestSpec, Encod
 
         let nonConformingFloatModel = try? NonConformingDecimalCodingTests.plistDecoder.decode(NonConformingFloatModel.self, from: nonConformingFloatXML.data(using: .utf8)!)
         XCTAssertNotNil(nonConformingFloatModel)
-        XCTAssertEqual(nonConformingFloatModel?.positive, nonConformingFloatExpectModel.positive)
-        XCTAssertEqual(nonConformingFloatModel?.negative, nonConformingFloatExpectModel.negative)
+        XCTAssertEqual(nonConformingFloatModel?.positive, nonConformingFloatExpectedModel.positive)
+        XCTAssertEqual(nonConformingFloatModel?.negative, nonConformingFloatExpectedModel.negative)
         XCTAssertEqual(nonConformingFloatModel?.nan.isNaN, true)
-        XCTAssertEqual(nonConformingFloatModel?.regular, nonConformingFloatExpectModel.regular)
+        XCTAssertEqual(nonConformingFloatModel?.regular, nonConformingFloatExpectedModel.regular)
     }
 
     func testNonConformingFloatEncoderUsingXML() {
-        XCTAssertNoThrow(try NonConformingDecimalCodingTests.plistEncoder.encode(nonConformingFloatExpectModel))
+        XCTAssertNoThrow(try NonConformingDecimalCodingTests.plistEncoder.encode(nonConformingFloatExpectedModel))
 
-        let nonConformingFloatExpectData = try? NonConformingDecimalCodingTests.plistEncoder.encode(nonConformingFloatExpectModel)
-        let nonConformingFloatExpectString = nonConformingFloatExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(nonConformingFloatExpectData)
-        XCTAssertNotNil(nonConformingFloatExpectString)
+        let nonConformingFloatXML = (try? NonConformingDecimalCodingTests.plistEncoder.encode(nonConformingFloatExpectedModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(nonConformingFloatXML)
+        XCTAssertEqual(nonConformingFloatXML, nonConformingFloatExpectedXML)
     }
 
     func testNonConformingDoubleDecoderUsingJSON() {
@@ -54,19 +52,18 @@ final class NonConformingDecimalCodingTests: XCTestCase, DecodingTestSpec, Encod
 
         let nonConformingDoubleModel = try? NonConformingDecimalCodingTests.jsonDecoder.decode(NonConformingDoubleModel.self, from: nonConformingDoubleJSON.data(using: .utf8)!)
         XCTAssertNotNil(nonConformingDoubleModel)
-        XCTAssertEqual(nonConformingDoubleModel?.positive, nonConformingDoubleExpectModel.positive)
-        XCTAssertEqual(nonConformingDoubleModel?.negative, nonConformingDoubleExpectModel.negative)
+        XCTAssertEqual(nonConformingDoubleModel?.positive, nonConformingDoubleExpectedModel.positive)
+        XCTAssertEqual(nonConformingDoubleModel?.negative, nonConformingDoubleExpectedModel.negative)
         XCTAssertEqual(nonConformingDoubleModel?.nan.isNaN, true)
-        XCTAssertEqual(nonConformingDoubleModel?.regular, nonConformingDoubleExpectModel.regular)
+        XCTAssertEqual(nonConformingDoubleModel?.regular, nonConformingDoubleExpectedModel.regular)
     }
 
     func testNonConformingDoubleEncoderUsingJSON() {
-        XCTAssertNoThrow(try NonConformingDecimalCodingTests.jsonEncoder.encode(nonConformingDoubleExpectModel))
+        XCTAssertNoThrow(try NonConformingDecimalCodingTests.jsonEncoder.encode(nonConformingDoubleExpectedModel))
 
-        let nonConformingDoubleExpectData = try? NonConformingDecimalCodingTests.jsonEncoder.encode(nonConformingDoubleExpectModel)
-        let nonConformingDoubleExpectString = nonConformingDoubleExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(nonConformingDoubleExpectData)
-        XCTAssertNotNil(nonConformingDoubleExpectString)
+        let nonConformingDoubleJSON = (try? NonConformingDecimalCodingTests.jsonEncoder.encode(nonConformingDoubleExpectedModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(nonConformingDoubleJSON)
+        XCTAssertEqual(nonConformingDoubleJSON, nonConformingDoubleExpectedJSON)
     }
 
     func testNonConformingDoubleDecoderUsingXML() {
@@ -74,19 +71,18 @@ final class NonConformingDecimalCodingTests: XCTestCase, DecodingTestSpec, Encod
 
         let nonConformingDoubleModel = try? NonConformingDecimalCodingTests.plistDecoder.decode(NonConformingDoubleModel.self, from: nonConformingDoubleXML.data(using: .utf8)!)
         XCTAssertNotNil(nonConformingDoubleModel)
-        XCTAssertEqual(nonConformingDoubleModel?.positive, nonConformingDoubleExpectModel.positive)
-        XCTAssertEqual(nonConformingDoubleModel?.negative, nonConformingDoubleExpectModel.negative)
+        XCTAssertEqual(nonConformingDoubleModel?.positive, nonConformingDoubleExpectedModel.positive)
+        XCTAssertEqual(nonConformingDoubleModel?.negative, nonConformingDoubleExpectedModel.negative)
         XCTAssertEqual(nonConformingDoubleModel?.nan.isNaN, true)
-        XCTAssertEqual(nonConformingDoubleModel?.regular, nonConformingDoubleExpectModel.regular)
+        XCTAssertEqual(nonConformingDoubleModel?.regular, nonConformingDoubleExpectedModel.regular)
     }
 
     func testNonConformingDoubleEncoderUsingXML() {
-        XCTAssertNoThrow(try NonConformingDecimalCodingTests.plistEncoder.encode(nonConformingDoubleExpectModel))
+        XCTAssertNoThrow(try NonConformingDecimalCodingTests.plistEncoder.encode(nonConformingDoubleExpectedModel))
 
-        let nonConformingDoubleExpectData = try? NonConformingDecimalCodingTests.plistEncoder.encode(nonConformingDoubleExpectModel)
-        let nonConformingDoubleExpectString = nonConformingDoubleExpectData.map { String(data: $0, encoding: .utf8)! }
-        XCTAssertNotNil(nonConformingDoubleExpectData)
-        XCTAssertNotNil(nonConformingDoubleExpectString)
+        let nonConformingDoubleXML = (try? NonConformingDecimalCodingTests.plistEncoder.encode(nonConformingDoubleExpectedModel)).map { String(data: $0, encoding: .utf8)! }
+        XCTAssertNotNil(nonConformingDoubleXML)
+        XCTAssertEqual(nonConformingDoubleXML, nonConformingDoubleExpectedXML)
     }
 }
 
@@ -107,7 +103,7 @@ private struct NonConformingFloatModel: Codable, Equatable {
     var regular: Float
 }
 
-private let nonConformingFloatExpectModel = NonConformingFloatModel(positive: .infinity, negative: -.infinity, nan: .nan, regular: 5.0)
+private let nonConformingFloatExpectedModel = NonConformingFloatModel(positive: .infinity, negative: -.infinity, nan: .nan, regular: 5.0)
 
 private let nonConformingFloatJSON = """
     {
@@ -118,22 +114,26 @@ private let nonConformingFloatJSON = """
     }
     """
 
+private let nonConformingFloatExpectedJSON = "{\"nan\":\"0\",\"negative\":\"-100\",\"positive\":\"100\",\"regular\":5}"
+
 private let nonConformingFloatXML = """
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
-            <dict>
-                    <key>positive</key>
-                    <string>100</string>
-                    <key>negative</key>
-                    <string>-100</string>
-                    <key>nan</key>
-                    <string>0</string>
-                    <key>regular</key>
-                    <real>5.0</real>
-            </dict>
+        <dict>
+            <key>positive</key>
+            <string>100</string>
+            <key>negative</key>
+            <string>-100</string>
+            <key>nan</key>
+            <string>0</string>
+            <key>regular</key>
+            <real>5.0</real>
+        </dict>
     </plist>
     """
+
+private let nonConformingFloatExpectedXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n\t<key>nan</key>\n\t<string>0</string>\n\t<key>negative</key>\n\t<string>-100</string>\n\t<key>positive</key>\n\t<string>100</string>\n\t<key>regular</key>\n\t<real>5</real>\n</dict>\n</plist>\n"
 
 private struct NonConformingDoubleModel: Codable, Equatable {
     @NonConformingDoubleCoding<NonConformingTestValueProvider>
@@ -146,7 +146,7 @@ private struct NonConformingDoubleModel: Codable, Equatable {
     var regular: Double
 }
 
-private let nonConformingDoubleExpectModel = NonConformingDoubleModel(positive: .infinity, negative: -.infinity, nan: .nan, regular: 5.0)
+private let nonConformingDoubleExpectedModel = NonConformingDoubleModel(positive: .infinity, negative: -.infinity, nan: .nan, regular: 5.0)
 
 private let nonConformingDoubleJSON = """
     {
@@ -157,19 +157,23 @@ private let nonConformingDoubleJSON = """
     }
     """
 
+private let nonConformingDoubleExpectedJSON = "{\"nan\":\"0\",\"negative\":\"-100\",\"positive\":\"100\",\"regular\":5}"
+
 private let nonConformingDoubleXML = """
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
-            <dict>
-                    <key>positive</key>
-                    <string>100</string>
-                    <key>negative</key>
-                    <string>-100</string>
-                    <key>nan</key>
-                    <string>0</string>
-                    <key>regular</key>
-                    <real>5.0</real>
-            </dict>
+        <dict>
+            <key>positive</key>
+            <string>100</string>
+            <key>negative</key>
+            <string>-100</string>
+            <key>nan</key>
+            <string>0</string>
+            <key>regular</key>
+            <real>5.0</real>
+        </dict>
     </plist>
     """
+
+private let nonConformingDoubleExpectedXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n\t<key>nan</key>\n\t<string>0</string>\n\t<key>negative</key>\n\t<string>-100</string>\n\t<key>positive</key>\n\t<string>100</string>\n\t<key>regular</key>\n\t<real>5</real>\n</dict>\n</plist>\n"

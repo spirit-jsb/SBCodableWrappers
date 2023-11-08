@@ -52,7 +52,7 @@ extension DecodingTestSpec {
 extension EncodingTestSpec {
     static var jsonEncoder: JSONEncoder {
         let encoder = JSONEncoder()
-        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        encoder.outputFormatting = [.sortedKeys]
 
         return encoder
     }

@@ -10,55 +10,55 @@ import XCTest
 
 final class LossyCollectionDecodingTests: XCTestCase, DecodingTestSpec {
     func testLossyCollectionDecoderUsingJSON() {
-        XCTAssertNoThrow(try LossyCollectionDecodingTests.jsonDecoder.decode(LossyCollectionModel.self, from: unlossyCollectionJSON.data(using: .utf8)!))
+        XCTAssertNoThrow(try LossyCollectionDecodingTests.jsonDecoder.decode(LossyCollectionModel.self, from: noneLossyCollectionJSON.data(using: .utf8)!))
 
-        let unlossyCollectionModel = try? LossyCollectionDecodingTests.jsonDecoder.decode(LossyCollectionModel.self, from: unlossyCollectionJSON.data(using: .utf8)!)
-        XCTAssertNotNil(unlossyCollectionModel)
-        XCTAssertEqual(unlossyCollectionModel, unlossyCollectionExpectModel)
+        let noneLossyCollectionModel = try? LossyCollectionDecodingTests.jsonDecoder.decode(LossyCollectionModel.self, from: noneLossyCollectionJSON.data(using: .utf8)!)
+        XCTAssertNotNil(noneLossyCollectionModel)
+        XCTAssertEqual(noneLossyCollectionModel, noneLossyCollectionExpectedModel)
 
         XCTAssertNoThrow(try LossyCollectionDecodingTests.jsonDecoder.decode(LossyCollectionModel.self, from: emptyLossyCollectionJSON.data(using: .utf8)!))
 
         let emptyLossyCollectionModel = try? LossyCollectionDecodingTests.jsonDecoder.decode(LossyCollectionModel.self, from: emptyLossyCollectionJSON.data(using: .utf8)!)
         XCTAssertNotNil(emptyLossyCollectionModel)
-        XCTAssertEqual(emptyLossyCollectionModel, lossyCollectionExpectModel)
+        XCTAssertEqual(emptyLossyCollectionModel, lossyCollectionExpectedModel)
 
         XCTAssertNoThrow(try LossyCollectionDecodingTests.jsonDecoder.decode(LossyCollectionModel.self, from: allNullLossyCollectionJSON.data(using: .utf8)!))
 
         let allNullLossyCollectionModel = try? LossyCollectionDecodingTests.jsonDecoder.decode(LossyCollectionModel.self, from: allNullLossyCollectionJSON.data(using: .utf8)!)
         XCTAssertNotNil(allNullLossyCollectionModel)
-        XCTAssertEqual(allNullLossyCollectionModel, lossyCollectionExpectModel)
+        XCTAssertEqual(allNullLossyCollectionModel, lossyCollectionExpectedModel)
 
         XCTAssertNoThrow(try LossyCollectionDecodingTests.jsonDecoder.decode(LossyCollectionModel.self, from: partialNullLossyCollectionJSON.data(using: .utf8)!))
 
         let partialNullLossyCollectionModel = try? LossyCollectionDecodingTests.jsonDecoder.decode(LossyCollectionModel.self, from: partialNullLossyCollectionJSON.data(using: .utf8)!)
         XCTAssertNotNil(partialNullLossyCollectionModel)
-        XCTAssertEqual(partialNullLossyCollectionModel, unlossyCollectionExpectModel)
+        XCTAssertEqual(partialNullLossyCollectionModel, noneLossyCollectionExpectedModel)
     }
 
     func testLossyCollectionDecoderUsingXML() {
-        XCTAssertNoThrow(try LossyCollectionDecodingTests.plistDecoder.decode(LossyCollectionModel.self, from: unlossyCollectionXML.data(using: .utf8)!))
+        XCTAssertNoThrow(try LossyCollectionDecodingTests.plistDecoder.decode(LossyCollectionModel.self, from: noneLossyCollectionXML.data(using: .utf8)!))
 
-        let unlossyCollectionModel = try? LossyCollectionDecodingTests.plistDecoder.decode(LossyCollectionModel.self, from: unlossyCollectionXML.data(using: .utf8)!)
-        XCTAssertNotNil(unlossyCollectionModel)
-        XCTAssertEqual(unlossyCollectionModel, unlossyCollectionExpectModel)
+        let noneLossyCollectionModel = try? LossyCollectionDecodingTests.plistDecoder.decode(LossyCollectionModel.self, from: noneLossyCollectionXML.data(using: .utf8)!)
+        XCTAssertNotNil(noneLossyCollectionModel)
+        XCTAssertEqual(noneLossyCollectionModel, noneLossyCollectionExpectedModel)
 
         XCTAssertNoThrow(try LossyCollectionDecodingTests.plistDecoder.decode(LossyCollectionModel.self, from: emptyLossyCollectionXML.data(using: .utf8)!))
 
         let emptyLossyCollectionModel = try? LossyCollectionDecodingTests.plistDecoder.decode(LossyCollectionModel.self, from: emptyLossyCollectionXML.data(using: .utf8)!)
         XCTAssertNotNil(emptyLossyCollectionModel)
-        XCTAssertEqual(emptyLossyCollectionModel, lossyCollectionExpectModel)
+        XCTAssertEqual(emptyLossyCollectionModel, lossyCollectionExpectedModel)
 
         XCTAssertNoThrow(try LossyCollectionDecodingTests.plistDecoder.decode(LossyCollectionModel.self, from: allNullLossyCollectionXML.data(using: .utf8)!))
 
         let allNullLossyCollectionModel = try? LossyCollectionDecodingTests.plistDecoder.decode(LossyCollectionModel.self, from: allNullLossyCollectionXML.data(using: .utf8)!)
         XCTAssertNotNil(allNullLossyCollectionModel)
-        XCTAssertEqual(allNullLossyCollectionModel, lossyCollectionExpectModel)
+        XCTAssertEqual(allNullLossyCollectionModel, lossyCollectionExpectedModel)
 
         XCTAssertNoThrow(try LossyCollectionDecodingTests.plistDecoder.decode(LossyCollectionModel.self, from: partialNullLossyCollectionXML.data(using: .utf8)!))
 
         let partialNullLossyCollectionModel = try? LossyCollectionDecodingTests.plistDecoder.decode(LossyCollectionModel.self, from: partialNullLossyCollectionXML.data(using: .utf8)!)
         XCTAssertNotNil(partialNullLossyCollectionModel)
-        XCTAssertEqual(partialNullLossyCollectionModel, unlossyCollectionExpectModel)
+        XCTAssertEqual(partialNullLossyCollectionModel, noneLossyCollectionExpectedModel)
     }
 }
 
@@ -73,10 +73,10 @@ private struct LossyCollectionModel: Codable, Equatable {
     var setValue: Set<String>
 }
 
-private let lossyCollectionExpectModel = LossyCollectionModel(arrayValue: [], dictionaryValue: [:], setValue: [])
-private let unlossyCollectionExpectModel = LossyCollectionModel(arrayValue: ["1", "2"], dictionaryValue: ["1": "1", "2": "2"], setValue: ["1", "2"])
+private let lossyCollectionExpectedModel = LossyCollectionModel(arrayValue: [], dictionaryValue: [:], setValue: [])
+private let noneLossyCollectionExpectedModel = LossyCollectionModel(arrayValue: ["1", "2"], dictionaryValue: ["1": "1", "2": "2"], setValue: ["1", "2"])
 
-private let unlossyCollectionJSON = """
+private let noneLossyCollectionJSON = """
     {
         "arrayValue": [
             "1",
@@ -93,29 +93,29 @@ private let unlossyCollectionJSON = """
     }
     """
 
-private let unlossyCollectionXML = """
+private let noneLossyCollectionXML = """
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
+        <dict>
+            <key>arrayValue</key>
+            <array>
+                <string>1</string>
+                <string>2</string>
+            </array>
+            <key>dictionaryValue</key>
             <dict>
-                    <key>arrayValue</key>
-                    <array>
-                            <string>1</string>
-                            <string>2</string>
-                    </array>
-                    <key>dictionaryValue</key>
-                    <dict>
-                            <key>1</key>
-                            <string>1</string>
-                            <key>2</key>
-                            <string>2</string>
-                    </dict>
-                    <key>setValue</key>
-                    <array>
-                            <string>1</string>
-                            <string>2</string>
-                    </array>
+                <key>1</key>
+                <string>1</string>
+                <key>2</key>
+                <string>2</string>
             </dict>
+            <key>setValue</key>
+            <array>
+                <string>1</string>
+                <string>2</string>
+            </array>
+        </dict>
     </plist>
     """
 
@@ -131,17 +131,17 @@ private let emptyLossyCollectionXML = """
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
+        <dict>
+            <key>arrayValue</key>
+            <array>
+            </array>
+            <key>dictionaryValue</key>
             <dict>
-                    <key>arrayValue</key>
-                    <array>
-                    </array>
-                    <key>dictionaryValue</key>
-                    <dict>
-                    </dict>
-                    <key>setValue</key>
-                    <array>
-                    </array>
             </dict>
+            <key>setValue</key>
+            <array>
+            </array>
+        </dict>
     </plist>
     """
 
@@ -166,25 +166,25 @@ private let allNullLossyCollectionXML = """
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
+        <dict>
+            <key>arrayValue</key>
+            <array>
+                <string>$null</string>
+                <string>$null</string>
+            </array>
+            <key>dictionaryValue</key>
             <dict>
-                    <key>arrayValue</key>
-                    <array>
-                            <string>$null</string>
-                            <string>$null</string>
-                    </array>
-                    <key>dictionaryValue</key>
-                    <dict>
-                            <key>1</key>
-                            <string>$null</string>
-                            <key>2</key>
-                            <string>$null</string>
-                    </dict>
-                    <key>setValue</key>
-                    <array>
-                            <string>$null</string>
-                            <string>$null</string>
-                    </array>
+                <key>1</key>
+                <string>$null</string>
+                <key>2</key>
+                <string>$null</string>
             </dict>
+            <key>setValue</key>
+            <array>
+                <string>$null</string>
+                <string>$null</string>
+            </array>
+        </dict>
     </plist>
     """
 
@@ -212,28 +212,28 @@ private let partialNullLossyCollectionXML = """
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
+        <dict>
+            <key>arrayValue</key>
+            <array>
+                <string>1</string>
+                <string>$null</string>
+                <string>2</string>
+            </array>
+            <key>dictionaryValue</key>
             <dict>
-                    <key>arrayValue</key>
-                    <array>
-                            <string>1</string>
-                            <string>$null</string>
-                            <string>2</string>
-                    </array>
-                    <key>dictionaryValue</key>
-                    <dict>
-                            <key>1</key>
-                            <string>1</string>
-                            <key>2</key>
-                            <string>2</string>
-                            <key>3</key>
-                            <string>$null</string>
-                    </dict>
-                    <key>setValue</key>
-                    <array>
-                            <string>1</string>
-                            <string>$null</string>
-                            <string>2</string>
-                    </array>
+                <key>1</key>
+                <string>1</string>
+                <key>2</key>
+                <string>2</string>
+                <key>3</key>
+                <string>$null</string>
             </dict>
+            <key>setValue</key>
+            <array>
+                <string>1</string>
+                <string>$null</string>
+                <string>2</string>
+            </array>
+        </dict>
     </plist>
     """
