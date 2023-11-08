@@ -10,6 +10,7 @@
 		501A810E2AFADAE9002F9C3D /* DateCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501A810D2AFADAE9002F9C3D /* DateCodingTests.swift */; };
 		9421DA122AFB0D4C00C394BC /* FallbackCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9421DA112AFB0D4C00C394BC /* FallbackCodingTests.swift */; };
 		9421DA142AFB22D800C394BC /* LossyCollectionDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9421DA132AFB22D800C394BC /* LossyCollectionDecodingTests.swift */; };
+		9421DA162AFB35D600C394BC /* OptionalCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9421DA152AFB35D600C394BC /* OptionalCodingTests.swift */; };
 		942B2A892AF87A8F00209BE2 /* OmittedCodingWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B2A882AF87A8F00209BE2 /* OmittedCodingWrappers.swift */; };
 		942B2A8B2AF87F8800209BE2 /* ImmutableWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B2A8A2AF87F8800209BE2 /* ImmutableWrappers.swift */; };
 		942B2A8D2AF8932800209BE2 /* FallbackCodingWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942B2A8C2AF8932800209BE2 /* FallbackCodingWrappers.swift */; };
@@ -46,6 +47,7 @@
 		501A810D2AFADAE9002F9C3D /* DateCodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateCodingTests.swift; path = Tests/DateCodingTests.swift; sourceTree = "<group>"; };
 		9421DA112AFB0D4C00C394BC /* FallbackCodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FallbackCodingTests.swift; path = Tests/FallbackCodingTests.swift; sourceTree = "<group>"; };
 		9421DA132AFB22D800C394BC /* LossyCollectionDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LossyCollectionDecodingTests.swift; path = Tests/LossyCollectionDecodingTests.swift; sourceTree = "<group>"; };
+		9421DA152AFB35D600C394BC /* OptionalCodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OptionalCodingTests.swift; path = Tests/OptionalCodingTests.swift; sourceTree = "<group>"; };
 		942B2A882AF87A8F00209BE2 /* OmittedCodingWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmittedCodingWrappers.swift; sourceTree = "<group>"; };
 		942B2A8A2AF87F8800209BE2 /* ImmutableWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmutableWrappers.swift; sourceTree = "<group>"; };
 		942B2A8C2AF8932800209BE2 /* FallbackCodingWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallbackCodingWrappers.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				9421DA132AFB22D800C394BC /* LossyCollectionDecodingTests.swift */,
 				947EF06A2AFA2D74005F48FA /* NonConformingBoolCodingTests.swift */,
 				947EF06B2AFA2D74005F48FA /* NonConformingDecimalCodingTests.swift */,
+				9421DA152AFB35D600C394BC /* OptionalCodingTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				947EF06E2AFA2D74005F48FA /* CodingTestSpec.swift in Sources */,
+				9421DA162AFB35D600C394BC /* OptionalCodingTests.swift in Sources */,
 				9421DA122AFB0D4C00C394BC /* FallbackCodingTests.swift in Sources */,
 				947EF06D2AFA2D74005F48FA /* Base64CodingTests.swift in Sources */,
 				501A810E2AFADAE9002F9C3D /* DateCodingTests.swift in Sources */,
