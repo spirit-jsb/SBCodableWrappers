@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name        = 'SBCodableWrappers'
-    s.version     = '0.1.0'
+    s.version     = '1.0.0'
     s.summary     = 'A lightweight and pure Swift implemented library using PropertyWrappers to make custom Serialization of Swift Codable Types easy.'
   
     s.description = <<-DESC
