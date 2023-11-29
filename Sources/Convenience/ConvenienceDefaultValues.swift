@@ -1,8 +1,9 @@
 //
 //  ConvenienceDefaultValues.swift
-//  SBCodableWrappers
 //
-//  Created by JONO-Jsb on 2023/11/7.
+//  Created by Max on 2023/11/9
+//
+//  Copyright © 2023 Max. All rights reserved.
 //
 
 #if canImport(Foundation)
